@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="keywords"
+      content="Mariusz, mariusz, Maslanka, maslanka, Artist, artist, Art, art, Norway, norway, Poland, Poland, Sztuka, sztuka, Polska, polska, Norwegia, norwegia, Artysta, artysta"
+    />
+    <meta
+      name="description"
+      content="Mariusz Maslanka (b. 1992, Poland) is an artist living and working in Oslo, Norway."
+    />
+    <title>Mariusz Maslanka</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
+  </head>
+  <body>
+    <div id="buttons">
+      <a href="contact.html">contact</a>
+      <a href="cv.html">CV</a>
+    </div>
+    <div id="gallery">
+      <img src="" alt="" id="photo" />
+      <div id="photo-info">
+        <p id="photo-description"></p>
+      </div>
+    </div>
+    <footer>Mariusz Maslanka &copy;</footer>
+    <script>
+      const photo = document.querySelector("#photo");
+      const photoDescription = document.querySelector("#photo-description");
+      const photoNumber = Math.floor(Math.random() * (1 + 1));
+      const properties = [
+        {
+          title: "Sleepwalking",
+          description: "2023, Installation view, HULIAS, Oslo",
+        },
+        {
+          title: "Frozen Estate",
+          description:
+            "2022, Installation view, Kunstnernes Hus, photo. Vegard Kleven",
+        },
+      ];
+
+      photo.src = `${photoNumber}.jpg`;
+      photo.alt = `${properties[photoNumber].title}. ${properties[photoNumber].description}.`;
+      photoDescription.innerHTML = `<i>${properties[photoNumber].title}</i>, ${properties[photoNumber].description}`;
+    </script>
+  </body>
+</html>
