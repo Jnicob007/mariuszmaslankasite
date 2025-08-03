@@ -15,6 +15,7 @@ body {
   gap: 6px;
   width: fit-content;
   font-size: 18px;
+  position: absolute;
 }
 
 a {
@@ -28,6 +29,7 @@ a:hover {
 }
 
 #gallery {
+  margin: 58.05px 0 5vh;
   width: calc(100% - 50px);
   display: flex;
   justify-content: center;
@@ -38,8 +40,15 @@ a:hover {
 }
 
 #photo {
-  max-width: 800px;
   width: 100%;
+}
+
+#photo.horizontal {
+  max-width: 860px;
+}
+
+#photo.vertical {
+  max-width: 500px;
 }
 
 #photo-info {
