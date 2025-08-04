@@ -74,6 +74,12 @@ footer {
   bottom: 0;
 }
 
+#cv-content {
+  margin: 46px 25px 5vh;
+  font-family: Helvetica, Neue;
+  font-size: 18px;
+}
+
 @media (min-width: 5120px) {
   #photo {
     max-width: 60%;
