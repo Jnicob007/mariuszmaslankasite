@@ -83,11 +83,11 @@ a:hover {
 }
 
 #photo.horizontal {
-  max-width: 860px;
+  max-width: 840px;
 }
 
 #photo.vertical {
-  max-width: 500px;
+  max-width: 480px;
 }
 
 #photo-info {
@@ -115,7 +115,6 @@ footer {
 
 #cv-content {
   margin: 20px 20px 5vh 20px;
-  font-family: Helvetica, Neue;
   font-size: 18px;
 }
 
@@ -133,7 +132,6 @@ em {
   display: block;
   font-weight: 400;
   margin-bottom: 0.2em;
-  /*text-decoration: underline;*/
 }
 
 .date {
