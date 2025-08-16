@@ -1,3 +1,39 @@
+@font-face {
+  font-family: "TeX Gyre Heros";
+  src: url("fonts/texgyreheros-regular.woff2") format("woff2"),
+    url("fonts/texgyreheros-regular.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "TeX Gyre Heros";
+  src: url("fonts/texgyreheros-italic.woff2") format("woff2"),
+    url("fonts/texgyreheros-italic.woff") format("woff");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "TeX Gyre Heros";
+  src: url("fonts/texgyreheros-bold.woff2") format("woff2"),
+    url("fonts/texgyreheros-bold.woff") format("woff");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "TeX Gyre Heros";
+  src: url("fonts/texgyreheros-bolditalic.woff2") format("woff2"),
+    url("fonts/texgyreheros-bolditalic.woff") format("woff");
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -5,6 +41,10 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  font-family: "TeX Gyre Heros", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.2;
 }
 
 #buttons {
@@ -84,4 +124,19 @@ footer {
   #photo {
     max-width: 60%;
   }
+}
+
+em {
+  font-style: italic;
+}
+
+.title {
+  display: block;
+  font-weight: 400;
+  margin-bottom: 0.2em;
+  /*text-decoration: underline;*/
+}
+
+.date {
+  font-weight: 700;
 }
