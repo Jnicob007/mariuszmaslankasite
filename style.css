@@ -57,7 +57,7 @@ body {
   display: flex;
   justify-content: center;
   flex-direction: column;
-  margin: 20px;
+  margin: 25px;
   gap: 6px;
   width: fit-content;
   font-size: 16px;
@@ -80,7 +80,7 @@ a:hover {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 0 20px;
+  padding: 0 25px;
   flex: 1;
   flex-direction: column;
 }
@@ -121,7 +121,7 @@ footer {
 }
 
 #cv-content {
-  margin: 20px 20px 5vh 20px;
+  margin: 25px 25px 5vh 25px;
   font-size: 16px;
 }
 
