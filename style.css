@@ -140,12 +140,11 @@ em {
 
 .title {
   display: block;
-  font-weight: 400;
-  margin-bottom: 0em;
-  text-transform: uppercase;
+  font-weight: 600;
+  margin-bottom: 1em;
 }
 
 .date {
-  font-weight: 400;
+  font-weight: 500;
 
 }
