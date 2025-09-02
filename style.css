@@ -39,8 +39,8 @@ a:hover {
 }
 
 #gallery {
-  margin-top: 68px;
-  margin-bottom: 40px;
+  margin-top: 100px;
+  margin-bottom: 80px;
   width: 100%;            /* pełna szerokość */
   display: flex;
   justify-content: center;
@@ -57,7 +57,7 @@ a:hover {
   width: auto;
   height: auto;
   max-width: calc(100% - 40px);    /* boczne marginesy 20px */
-  max-height: calc(100vh - 168px); 
+  max-height: calc(100vh - 200px); 
 }
 
 /* Zdjęcia horyzontalne */
@@ -76,11 +76,11 @@ a:hover {
 @media (min-width: 1025px) {
   #photo.horizontal {
     max-width: calc(100% - 40px);   /* boczne marginesy 20px */
-    max-height: calc(100vh - 168px); /* góra/dół 40px */
+    max-height: calc(100vh - 200px); /* góra/dół 40px */
   }
 
   #photo.vertical {
-    max-height: calc(100vh - 168px); /* wertykalne zawsze do góra/dół */
+    max-height: calc(100vh - 200px); /* wertykalne zawsze do góra/dół */
     max-width: auto;
   }
 }
@@ -88,12 +88,12 @@ a:hover {
 /* --- Mobile / tablet (ekrany <=1024px) --- */
 @media (max-width: 1024px) {
   #photo.horizontal {
-    max-height: calc(100vh - 168px); /* najpierw kontrola wysokości */
+    max-height: calc(100vh - 200px); /* najpierw kontrola wysokości */
     max-width: calc(100% - 40px);   /* ale jeśli za szerokie, dopasuje się do marginesów bocznych */
   }
 
   #photo.vertical {
-    max-height: calc(100vh - 168px); /* wertykalne do góra/dół */
+    max-height: calc(100vh - 200px); /* wertykalne do góra/dół */
     max-width: auto;
   }
 }
