@@ -121,7 +121,6 @@ footer {
   font-size: 12px;
   padding: 10px 0;
   width: auto;
-  background: white;
   z-index: 1000;
   display: block; /* pewność, że footer siedzi w swojej linii */
   clear: both;    /* odcina go od poprzednich elementów inline */
