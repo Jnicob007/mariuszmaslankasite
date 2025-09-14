@@ -23,13 +23,11 @@ body {
   flex-direction: column;
   margin: 20px;
   width: fit-content;
-  font-size: 20px;
   position: absolute;
   display: flex;
 }
 
 a {
-  font-size: 20px;
   text-decoration: none;
   color: black;
 }
@@ -128,7 +126,6 @@ footer {
 
 #cv-content {
   margin: 20px 20px 5vh 20px;
-  font-size: 20px;
 }
 
 @media (min-width: 5120px) {
