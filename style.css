@@ -152,3 +152,14 @@ em {
   font-weight: 400;
 
 }
+
+/* --- Mobile font scaling --- */
+@media (max-width: 1024px) {
+  body {
+    font-size: 18px; /* zamiast 20px */
+  }
+
+  footer {
+    font-size: 14px; /* zamiast 15px */
+  }
+}
