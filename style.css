@@ -21,7 +21,6 @@ body {
   display: flex;
   justify-content: center;
   flex-direction: column;
-  margin: 20px;
   width: fit-content;
   position: absolute;
   display: flex;
@@ -150,8 +149,8 @@ em {
 
 }
 
-/* --- Mobile font scaling --- */
-@media (max-width: 1024px) {
+/* --- Font scaling --- */
+@media (max-width: 1512px) {
   body {
     font-size: 18px; /* zamiast 20px */
   }
