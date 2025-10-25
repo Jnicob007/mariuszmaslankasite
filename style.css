@@ -27,6 +27,17 @@ body {
   display: flex;
 }
 
+#buttons a:first-child {
+  font-family: 'Arimo', sans-serif;
+  color: black;
+}
+
+#buttons a:last-child {
+  position: absolute;
+  left: calc(50vw - 20px);
+  font-family: 'Arimo', sans-serif;
+  color: black;
+}
 a {
   text-decoration: none;
   color: black;
@@ -126,6 +137,16 @@ footer {
 
 #cv-content {
   margin: 20px 20px 5vh 20px;
+}
+
+#contact-content {
+  position: absolute;               /* pozycjonowanie względem ekranu */
+  top: 20px;                        /* od góry */
+  left: 50vw;          /* lewa krawędź kontenera w połowie ekranu minus 20px */
+  width: 50vw;                       /* szerokość kontenera */
+  max-width: 90vw;                   /* bezpieczeństwo na mobile */
+  box-sizing: border-box;
+  text-align: left;                  /* tekst przy lewej krawędzi kontenera */
 }
 
 @media (min-width: 5120px) {
