@@ -140,13 +140,7 @@ footer {
 }
 
 #contact-content {
-  position: absolute;               /* pozycjonowanie względem ekranu */
-  top: 20px;                        /* od góry */
-  left: 50vw;          /* lewa krawędź kontenera w połowie ekranu minus 20px */
-  width: 50vw;                       /* szerokość kontenera */
-  max-width: 90vw;                   /* bezpieczeństwo na mobile */
-  box-sizing: border-box;
-  text-align: left;                  /* tekst przy lewej krawędzi kontenera */
+  margin: 20px 20px 5vh 20px;             /* tekst przy lewej krawędzi kontenera */
 }
 
 @media (min-width: 5120px) {
