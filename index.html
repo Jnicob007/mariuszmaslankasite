@@ -146,20 +146,29 @@
         },
       ];
 
-      photo.src = `${photoNumber}.jpg`;
-      photo.alt = `${properties[photoNumber].title}. ${properties[photoNumber].description}.`;
-      photoDescription.innerHTML = `<i>${properties[photoNumber].title}</i>, ${properties[photoNumber].description}`;
-      photo.onload = () => {
-        if (photo.offsetWidth > photo.offsetHeight) {
-          photo.classList.add("horizontal");
-        } else {
-          photo.classList.add("vertical");
-        }
+  photo.src = `${photoNumber}.jpg`;
+  photo.alt = `${properties[photoNumber].title}. ${properties[photoNumber].description}.`;
+  photoDescription.innerHTML = `<i>${properties[photoNumber].title}</i>, ${properties[photoNumber].description}`;
 
-            // ustaw szerokość podpisu = szerokość zdjęcia
-    const photoInfo = document.querySelector("#photo-info");
+  const photoInfo = document.querySelector("#photo-info");
+
+  function updatePhotoInfoWidth() {
     photoInfo.style.width = `${photo.offsetWidth}px`;
-      };
+  }
+
+  photo.onload = () => {
+    // dodaj klasy dla proporcji
+    if (photo.offsetWidth > photo.offsetHeight) {
+      photo.classList.add("horizontal");
+    } else {
+      photo.classList.add("vertical");
+    }
+
+    updatePhotoInfoWidth();
+  };
+
+  // aktualizuj szerokość przy zmianie rozmiaru okna
+  window.addEventListener("resize", updatePhotoInfoWidth);
     </script>
   </body>
 </html>
