@@ -59,9 +59,9 @@ a:hover {
 }
 
 #photo-wrapper {
-  display: flex;
-  flex-direction: column; /* pionowo: zdjęcie + podpis */
-  align-items: flex-start; /* wyjustowanie do lewej */
+  position: relative;
+  display: inline-block;
+  margin: 0 auto;
 }
 
 #photo {
@@ -77,12 +77,30 @@ a:hover {
 
 /* podpis na zdjęciu */
 #photo-info {
-  margin-top: 0.4vh;       /* odstęp od zdjęcia */
+  position: absolute;
+  bottom: 0.5vh;
+  left: 5px;
+  color: rgb(240, 240, 240); /* domyślnie biały */
   font-family: "Arimo", sans-serif;
   font-size: 10px;
   line-height: 1.2;
-  color: black;       
-  text-align: left;      /* wyjustowanie do lewej */
+  text-shadow:
+    -0.5px -0.5px 0 rgb(75, 75, 75),
+     0.5px -0.5px 0 rgb(75, 75, 75),
+    -0.5px  0.5px 0 rgb(75, 75, 75),
+     0.5px  0.5px 0 rgb(75, 75, 75),
+     0px  -0.5px 0 rgb(75, 75, 75),
+     0px   0.5px 0 rgb(75, 75, 75),
+    -0.5px  0px 0 rgb(75, 75, 75),
+     0.5px  0px 0 rgb(75, 75, 75);
+  padding: 2px 4px;
+  border-radius: 3px;
+}
+
+@media (max-width: 1024px) {
+  #photo-info {
+    font-size: 8px;
+  }
 }
 
 #photo-description {
