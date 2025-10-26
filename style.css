@@ -78,7 +78,7 @@ a:hover {
 /* podpis na zdjęciu */
 #photo-info {
   position: absolute;
-  bottom: 1%;
+  bottom: 0.5vh;
   left: 10px;
   color: white;
   font-family: "Arimo", sans-serif;
