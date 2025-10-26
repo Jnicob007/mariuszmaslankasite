@@ -59,9 +59,9 @@ a:hover {
 }
 
 #photo-wrapper {
-  display: flex;
-  flex-direction: column; /* pionowo: zdjęcie + podpis */
-  align-items: flex-start; /* wyjustowanie do lewej */
+  position: relative;
+  display: inline-block;
+  margin: 0 auto;
 }
 
 #photo {
@@ -77,15 +77,27 @@ a:hover {
 
 /* podpis na zdjęciu */
 #photo-info {
-  margin-top: 0.5vh;       /* odstęp od zdjęcia */
+  position: absolute;
+  bottom: 0.5vh;
+  left: 5px;
+  color: white; /* domyślnie biały */
   font-family: "Arimo", sans-serif;
   font-size: 10px;
   line-height: 1.2;
-  color: black;
-  text-align: left;      /* wyjustowanie do lewej */
+  text-shadow:
+    -0.5px -0.5px 0 black,
+     0.5px -0.5px 0 black,
+    -0.5px  0.5px 0 black,
+     0.5px  0.5px 0 black,
+     0px  -0.5px 0 black,
+     0px   0.5px 0 black,
+    -0.5px  0px 0 black,
+     0.5px  0px 0 black;
+  padding: 2px 4px;
+  border-radius: 3px;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 600px) {
   #photo-info {
     font-size: 9px;
   }
@@ -123,7 +135,7 @@ footer {
 }
 
 /* --- MOBILE --- */
-@media (max-width: 768px) {
+@media (max-width: 600px) {
   #contact-content {
     position: static;         /* wraca do naturalnego układu */
     width: auto;
