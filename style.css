@@ -59,10 +59,11 @@ a:hover {
 }
 
 #photo-wrapper {
-  display: flex;
-  flex-direction: column; /* pionowo: zdjęcie + podpis */
-  align-items: flex-start; /* wyjustowanie do lewej */
+  display: inline-block;         /* dopasowuje szerokość do zdjęcia */
+  position: relative;
+  text-align: left;
 }
+
 #photo {
   display: block;
   height: auto;
@@ -83,8 +84,9 @@ a:hover {
   font-size: 10px;
   line-height: 1.2;
   color: black;
-  word-wrap: break-word;           /* zawijanie tekstu */
-  white-space: normal; 
+  box-sizing: border-box;        /* żeby padding nie poszerzał kontenera */
+  word-wrap: break-word;         /* pozwala zawijać tekst */
+  white-space: normal;  
   text-align: left;      /* wyjustowanie do lewej */
 }
 
