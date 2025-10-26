@@ -77,7 +77,7 @@ a:hover {
 
 /* podpis na zdjęciu */
 #photo-info {
-  margin-top: 0.5%;       
+  margin-top: 0.35vh;       
   font-family: "Arimo", sans-serif;
   font-size: 10px;
   line-height: 1.2;
