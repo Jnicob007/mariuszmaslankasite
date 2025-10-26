@@ -155,6 +155,10 @@
         } else {
           photo.classList.add("vertical");
         }
+
+            // ustaw szerokość podpisu = szerokość zdjęcia
+    const photoInfo = document.querySelector("#photo-info");
+    photoInfo.style.width = `${photo.offsetWidth}px`;
       };
     </script>
   </body>
