@@ -76,11 +76,15 @@ a:hover {
 
 /* podpis na zdjęciu */
 #photo-info {
-  margin-top: 0.35vh;       /* odstęp od zdjęcia */
+  margin-top: 0.35vh; 
+  width: fit-content;              /* dopasowanie szerokości do zawartości */
+  max-width: 100%;        /* odstęp od zdjęcia */
   font-family: "Arimo", sans-serif;
   font-size: 10px;
   line-height: 1.2;
   color: black;
+  word-wrap: break-word;           /* zawijanie tekstu */
+  white-space: normal; 
   text-align: left;      /* wyjustowanie do lewej */
 }
 
