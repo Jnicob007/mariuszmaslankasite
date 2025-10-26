@@ -97,6 +97,12 @@ a:hover {
   border-radius: 3px;
 }
 
+@media (max-width: 1024px) {
+  #photo-info {
+    font-size: 8px;
+  }
+}
+
 #photo-description {
   margin: 0;
 }
@@ -134,7 +140,6 @@ footer {
     position: static;         /* wraca do naturalnego układu */
     width: auto;
     margin: 20px;
-    font-size: 8px;
   }
 }
 
