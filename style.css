@@ -134,6 +134,7 @@ footer {
     position: static;         /* wraca do naturalnego układu */
     width: auto;
     margin: 20px;
+    font-size: 8px;
   }
 }
 
