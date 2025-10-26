@@ -78,9 +78,9 @@ a:hover {
 /* podpis na zdjęciu */
 #photo-info {
   position: absolute;
-  bottom: 0.5vh;
-  left: 5px;
-  color: white; /* domyślnie biały */
+  bottom: 1%;
+  left: 10px;
+  color: white;
   font-family: "Arimo", sans-serif;
   font-size: 10px;
   line-height: 1.2;
@@ -93,13 +93,11 @@ a:hover {
      0px   0.5px 0 black,
     -0.5px  0px 0 black,
      0.5px  0px 0 black;
-  padding: 2px 4px;
-  border-radius: 3px;
 }
 
 @media (max-width: 600px) {
   #photo-info {
-    font-size: 9px;
+    font-size: 8px;
   }
 }
 
