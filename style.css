@@ -48,8 +48,8 @@ a:hover {
 }
 
 #gallery {
-  margin-top: 100px;
-  margin-bottom: 80px;
+  margin-top: 72px;
+  margin-bottom: 60px;
   width: 100%;
   display: flex;
   justify-content: center;
@@ -69,7 +69,7 @@ a:hover {
   height: auto;
   width: auto;
   max-width: calc(100vw - 40px);   /* 20px margines z lewej i prawej */
-  max-height: calc(100vh - 200px); /* góra/dół */
+  max-height: calc(100vh - 148px); /* góra/dół */
   object-fit: contain;
   margin: 0 auto;                  /* centrowanie w poziomie */
   padding: 0;
