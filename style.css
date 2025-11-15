@@ -170,6 +170,9 @@ em {
   margin-bottom: 0.5rem;
 }
 
+.page-title {
+  margin-bottom: 0.5rem;
+}
 
 /* --- Font scaling --- */
 @media (max-width: 1512px) {
