@@ -1,10 +1,11 @@
 :root {
-  --buttons-margin: clamp(10px, 2vw, 20px);      /* margines przycisków */
-  --photo-top-buffer: clamp(20px, 8vh, 72px);   /* odstęp między przyciskami a zdjęciem */
-  --photo-side-margin: clamp(10px, 2vw, 20px);  /* boczne marginesy zdjęcia */
-  --photo-footer-buffer: clamp(18px, 7vh, 60px); /* odstęp pod zdjęciem od footera */
+  --buttons-margin: clamp(10px, 2vw, 20px);         /* margines przycisków */
+  --photo-top-buffer: clamp(20px, 8.5vh, 72px);      /* odstęp między przyciskami a zdjęciem */
+  --photo-side-margin: clamp(10px, 2vw, 20px);     /* boczne marginesy zdjęcia */
+  --photo-footer-buffer: clamp(18px, 6.5vh, 60px); /* odstęp pod zdjęciem od footera */
 }
 
+/* --- Reset / Body --- */
 html {
   -webkit-text-size-adjust: 100%;
   -moz-text-size-adjust: 100%;
@@ -99,7 +100,7 @@ a:hover {
   font-size: clamp(9px, 0.8vw, 10px);
   line-height: 1.2;
   color: black;
-  text-align: left; /* wyrównanie do lewej krawędzi zdjęcia */
+  text-align: left;
   box-sizing: border-box;
 }
 
@@ -122,17 +123,24 @@ footer {
   clear: both;
 }
 
-/* --- CV and Contact --- */
+/* --- CV --- */
 #cv-content {
   margin-left: var(--photo-side-margin);
   margin-right: var(--photo-side-margin);
-  margin-top: var(--photo-top-buffer);
+  margin-top: var(--buttons-margin); /* wyrównanie z przyciskami */
 }
 
+/* Przycisk Back w CV */
+#cv-content a.back-button {
+  display: inline-block;
+  margin-bottom: var(--photo-footer-buffer); /* responsywny odstęp pod przyciskiem */
+}
+
+/* --- Contact --- */
 #contact-content {
   position: absolute;
   left: 50vw;
-  top: var(--photo-top-buffer);
+  top: var(--buttons-margin); /* wyrównanie z przyciskami */
   width: 50vw;
   box-sizing: border-box;
   text-align: left;
@@ -154,6 +162,14 @@ footer {
     max-height: calc(
       100vh - var(--buttons-margin) - var(--photo-top-buffer) - var(--photo-footer-buffer)
     );
+  }
+
+  /* Contact na telefonie */
+  #contact-content {
+    position: static;
+    width: auto;
+    margin: var(--buttons-margin);      /* margines górny i boczne */
+    text-align: left;                   /* wyrównanie do lewej */
   }
 }
 
