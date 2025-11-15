@@ -1,3 +1,9 @@
+:root {
+  --buttons-margin: clamp(10px, 2vw, 20px);      /* margines przycisków */
+  --photo-top-buffer: clamp(20px, 8vh, 72px);   /* odstęp między przyciskami a zdjęciem */
+  --photo-side-margin: clamp(10px, 2vw, 20px);  /* boczne marginesy zdjęcia */
+  --photo-footer-buffer: clamp(18px, 7vh, 60px); /* odstęp pod zdjęciem od footera */
+}
 
 html {
   -webkit-text-size-adjust: 100%;
@@ -5,6 +11,7 @@ html {
   -ms-text-size-adjust: 100%;
   text-size-adjust: 100%;
 }
+
 body {
   margin: 0;
   padding: 0;
@@ -13,31 +20,34 @@ body {
   min-height: 100vh;
   font-family: "Arimo", sans-serif;
   font-weight: 400;
-  font-size: 18px;
+  font-size: clamp(16px, 1vw, 18px);
   line-height: 1.22;
 }
 
+/* --- Buttons --- */
 #buttons {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  margin: 20px;
-  width: fit-content;
-  position: absolute;
-  display: flex;
+  position: relative;
+  width: 100%;
+  height: auto;
+  margin: 0;
 }
 
 #buttons a:first-child {
+  position: absolute;
+  left: var(--buttons-margin);
+  top: var(--buttons-margin);
   font-family: 'Arimo', sans-serif;
   color: black;
 }
 
 #buttons a:last-child {
   position: absolute;
-  left: calc(50vw - 20px);
+  left: 50%;
+  top: var(--buttons-margin);
   font-family: 'Arimo', sans-serif;
   color: black;
 }
+
 a {
   text-decoration: none;
   color: black;
@@ -47,101 +57,107 @@ a:hover {
   text-decoration: underline;
 }
 
+/* --- Gallery --- */
 #gallery {
-  margin-top: 72px;
-  margin-bottom: 60px;
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
   flex: 1;
-  padding: 0;
+  padding-top: var(--photo-top-buffer);       /* górny bufor między przyciskami a zdjęciem */
+  padding-bottom: 0;
 }
 
 #photo-wrapper {
-  display: inline-block;         /* dopasowuje szerokość do zdjęcia */
+  display: inline-block;
   position: relative;
   text-align: left;
+  margin-left: var(--photo-side-margin);
+  margin-right: var(--photo-side-margin);
+  margin-bottom: var(--photo-footer-buffer); /* dolny odstęp od footera */
+  max-width: calc(100% - 2 * var(--photo-side-margin));
 }
 
 #photo {
   display: block;
+  width: 100%;
   height: auto;
-  width: auto;
-  max-width: calc(100vw - 40px);   /* 20px margines z lewej i prawej */
-  max-height: calc(100vh - 148px); /* góra/dół */
+  max-width: 100%;
+  max-height: calc(
+    100vh - var(--buttons-margin) - var(--photo-top-buffer) - var(--photo-footer-buffer)
+  );
   object-fit: contain;
-  margin: 0 auto;                  /* centrowanie w poziomie */
+  margin: 0 auto;
   padding: 0;
 }
 
-/* podpis na zdjęciu */
+/* --- Photo info --- */
 #photo-info {
-  margin-top: 0.35vh; 
-  width: fit-content;              /* dopasowanie szerokości do zawartości */
-  max-width: 100%;        /* odstęp od zdjęcia */
+  margin-top: 0.35vh;
+  max-width: 100%;
   font-family: "Arimo", sans-serif;
-  font-size: 10px;
+  font-size: clamp(9px, 0.8vw, 10px);
   line-height: 1.2;
   color: black;
-  box-sizing: border-box;        /* żeby padding nie poszerzał kontenera */
-  word-wrap: break-word;         /* pozwala zawijać tekst */
-  white-space: normal;  
-  text-align: left;      /* wyjustowanie do lewej */
-}
-
-@media (max-width: 600px) {
-  #photo-info {
-    font-size: 9px;
-  }
+  text-align: left; /* wyrównanie do lewej krawędzi zdjęcia */
+  box-sizing: border-box;
 }
 
 #photo-description {
   margin: 0;
 }
 
+/* --- Footer --- */
 footer {
   position: fixed;
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
   text-align: center;
-  font-size: 14px;
+  font-size: clamp(13px, 1vw, 14px);
   padding: 10px 0;
   width: auto;
   z-index: 1000;
-  display: block; /* pewność, że footer siedzi w swojej linii */
-  clear: both;    /* odcina go od poprzednich elementów inline */
+  display: block;
+  clear: both;
 }
 
+/* --- CV and Contact --- */
 #cv-content {
-  margin: 20px 20px 5vh 20px;
+  margin-left: var(--photo-side-margin);
+  margin-right: var(--photo-side-margin);
+  margin-top: var(--photo-top-buffer);
 }
 
 #contact-content {
   position: absolute;
   left: 50vw;
-  top: 20px;
-  width: 50vw;               /* zajmuje połowę szerokości */
+  top: var(--photo-top-buffer);
+  width: 50vw;
   box-sizing: border-box;
   text-align: left;
 }
 
-/* --- MOBILE --- */
+/* --- Mobile adjustments --- */
 @media (max-width: 600px) {
-  #contact-content {
-    position: static;         /* wraca do naturalnego układu */
-    width: auto;
-    margin: 20px;
+  body {
+    font-size: 16px;
   }
-}
 
-@media (min-width: 5120px) {
+  #photo-wrapper, #cv-content {
+    margin-left: var(--photo-side-margin);
+    margin-right: var(--photo-side-margin);
+  }
+
   #photo {
-    max-width: 60%;
+    max-width: calc(100vw - 2 * var(--photo-side-margin));
+    max-height: calc(
+      100vh - var(--buttons-margin) - var(--photo-top-buffer) - var(--photo-footer-buffer)
+    );
   }
 }
 
+/* --- Typography --- */
 em {
   font-style: italic;
 }
@@ -156,9 +172,8 @@ em {
   opacity: 0.9;
 }
 
-
 .entry {
-  margin-bottom: 0.5rem; /* regulujesz jak chcesz */
+  margin-bottom: 0.5rem;
   line-height: 1.25;
 }
 
@@ -172,15 +187,4 @@ em {
 
 .page-title {
   margin-bottom: 0.5rem;
-}
-
-/* --- Font scaling --- */
-@media (max-width: 1512px) {
-  body {
-    font-size: 16px; /* zamiast 20px */
-  }
-
-  footer {
-    font-size: 13px; /* zamiast 15px */
-  }
 }
