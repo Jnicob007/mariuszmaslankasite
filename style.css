@@ -1,8 +1,10 @@
 :root {
-  --buttons-margin: clamp(15px, 1.25vw, 25px);         /* margines przycisków */
-  --photo-top-buffer: clamp(20px, 8.5vh, 72px);      /* odstęp między przyciskami a zdjęciem */
-  --photo-side-margin: clamp(15px, 1.25vw, 25px);     /* boczne marginesy zdjęcia */
-  --photo-footer-buffer: clamp(18px, 6.5vh, 60px); /* odstęp pod zdjęciem od footera */
+  --buttons-margin: clamp(15px, 1.25vw, 20px);
+  --photo-top-buffer: clamp(20px, 8.5vh, 72px);
+  --photo-side-margin: clamp(15px, 1.25vw, 20px);
+  --photo-footer-buffer: clamp(18px, 6.5vh, 60px);
+  --ui-font-size: clamp(16px, 1vw, 20px);
+  --ui-line-height: 1.25;
 }
 
 /* --- Reset / Body --- */
@@ -21,8 +23,8 @@ body {
   min-height: 100vh;
   font-family: "Arimo", sans-serif;
   font-weight: 400;
-  font-size: clamp(16px, 1vw, 18px);
-  line-height: 1.22;
+  font-size: var(--ui-font-size);
+  line-height: var(--ui-line-height);
 }
 
 /* --- Buttons --- */
@@ -31,13 +33,14 @@ body {
   width: 100%;
   height: auto;
   margin: 0;
+  font-size: var(--ui-font-size);
+  line-height: var(--ui-line-height);
 }
 
 #buttons a:first-child {
   position: absolute;
   left: var(--buttons-margin);
   top: var(--buttons-margin);
-  font-family: 'Arimo', sans-serif;
   color: black;
 }
 
@@ -45,13 +48,13 @@ body {
   position: absolute;
   left: 50%;
   top: var(--buttons-margin);
-  font-family: 'Arimo', sans-serif;
   color: black;
 }
 
 a {
   text-decoration: none;
   color: black;
+  line-height: var(--ui-line-height);
 }
 
 a:hover {
@@ -65,7 +68,7 @@ a:hover {
   justify-content: center;
   align-items: center;
   flex: 1;
-  padding-top: var(--photo-top-buffer);       /* górny bufor między przyciskami a zdjęciem */
+  padding-top: var(--photo-top-buffer);
   padding-bottom: 0;
 }
 
@@ -75,7 +78,7 @@ a:hover {
   text-align: left;
   margin-left: var(--photo-side-margin);
   margin-right: var(--photo-side-margin);
-  margin-bottom: var(--photo-footer-buffer); /* dolny odstęp od footera */
+  margin-bottom: var(--photo-footer-buffer);
   max-width: calc(100% - 2 * var(--photo-side-margin));
 }
 
@@ -97,11 +100,10 @@ a:hover {
   margin-top: 0.35vh;
   max-width: 100%;
   font-family: "Arimo", sans-serif;
-  font-size: clamp(9px, 0.8vw, 10px);
-  line-height: 1.2;
+  font-size: clamp(9px, 0.7vw, 12px);
+  line-height: var(--ui-line-height);
   color: black;
   text-align: left;
-  box-sizing: border-box;
   opacity: 0.9;
 }
 
@@ -117,12 +119,11 @@ footer {
   left: 50%;
   transform: translateX(-50%);
   text-align: center;
-  font-size: clamp(13px, 0.9vw, 14px);
-  padding: 10px 0;
+  font-size: clamp(13px, 0.7vw, 15px);
+  line-height: var(--ui-line-height);
+  padding: clamp(10px, 1.4vh, 18px) 0;
   width: auto;
   z-index: 1000;
-  display: block;
-  clear: both;
   opacity: 0.8;
 }
 
@@ -130,26 +131,29 @@ footer {
 #cv-content {
   margin-left: var(--photo-side-margin);
   margin-right: var(--photo-side-margin);
-  margin-top: var(--buttons-margin); /* wyrównanie z przyciskami */
+  margin-top: var(--buttons-margin);
+  font-size: var(--ui-font-size);
+  line-height: var(--ui-line-height);
 }
 
-/* Przycisk Back w CV */
 #cv-content a.back-button {
   display: inline-block;
-  margin-bottom: var(--photo-footer-buffer); /* responsywny odstęp pod przyciskiem */
+  margin-bottom: var(--photo-footer-buffer);
 }
 
 /* --- Contact --- */
 #contact-content {
   position: absolute;
   left: 50vw;
-  top: var(--buttons-margin); /* wyrównanie z przyciskami */
+  top: var(--buttons-margin);
   width: 50vw;
   box-sizing: border-box;
   text-align: left;
+  font-size: var(--ui-font-size);
+  line-height: var(--ui-line-height);
 }
 
-/* --- Mobile adjustments --- */
+/* --- Mobile --- */
 @media (max-width: 600px) {
   body {
     font-size: 16px;
@@ -167,12 +171,11 @@ footer {
     );
   }
 
-  /* Contact na telefonie */
   #contact-content {
     position: static;
     width: auto;
-    margin: var(--buttons-margin);      /* margines górny i boczne */
-    text-align: left;                   /* wyrównanie do lewej */
+    margin: var(--buttons-margin);
+    text-align: left;
   }
 }
 
@@ -184,7 +187,8 @@ em {
 .title {
   display: block;
   font-weight: 400;
-  margin-bottom: 0em;
+  margin-bottom: 0;
+  line-height: var(--ui-line-height);
 }
 
 .date {
@@ -193,7 +197,7 @@ em {
 
 .entry {
   margin-bottom: 0.5rem;
-  line-height: 1.25;
+  line-height: var(--ui-line-height);
 }
 
 .section {
@@ -206,4 +210,6 @@ em {
 
 .page-title {
   margin-bottom: 0.5rem;
+  font-size: var(--ui-font-size);
+  line-height: var(--ui-line-height);
 }
