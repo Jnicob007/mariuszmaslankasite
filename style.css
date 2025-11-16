@@ -74,7 +74,7 @@ a:hover {
 }
 
 #photo-wrapper {
-  display: inline-block;
+  display: block; /* ← UPDATED */
   position: relative;
   text-align: left;
   margin-left: var(--photo-side-margin);
@@ -100,6 +100,7 @@ a:hover {
 #photo-info {
   margin-top: 0.35vh;
   max-width: 100%;
+  width: 100%;  /* ← UPDATED */
   font-family: "Arimo", sans-serif;
   font-size: clamp(9px, 0.7vw, 12px);
   line-height: var(--ui-line-height);
@@ -145,9 +146,9 @@ footer {
 /* --- Contact --- */
 #contact-content {
   position: absolute;
-  left: 50vw;
+  left: 50%; /* ← UPDATED */
   top: var(--buttons-margin);
-  width: 50vw;
+  width: 50%; /* ← UPDATED */
   box-sizing: border-box;
   text-align: left;
   font-size: var(--ui-font-size);
