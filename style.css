@@ -102,10 +102,12 @@ a:hover {
   color: black;
   text-align: left;
   box-sizing: border-box;
+  opacity: 0.9;
 }
 
 #photo-description {
   margin: 0;
+  opacity: 0.9;
 }
 
 /* --- Footer --- */
