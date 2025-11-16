@@ -1,202 +1,119 @@
 <!DOCTYPE html>
 <html lang="en">
-  <link href="https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet" />
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      name="keywords"
-      content="Mariusz, mariusz, Maślanka, maślanka, Maslanka, maslanka, Artist, artist, Art, art, Norway, norway, Poland, Poland, Sztuka, sztuka, Polska, polska, Norwegia, norwegia, Artysta, artysta"
-    />
-    <meta
-      name="description"
-      content="Mariusz Maślanka (b. 1992, Poland) is an artist living and working in Oslo, Norway."
-    />
-    <title>Mariusz Maślanka</title>
-    <link rel="stylesheet" href="style.css" />
-    <link rel="icon" href="favicon.ico" type="image/x-icon" />
-  </head>
-  <body>
-    <div id="buttons">
-      <a href="cv.html">CV</a>
-      <a href="contact.html">Contact</a>
-    </div>
-<div id="gallery">
-  <div id="photo-wrapper">
-    <img src="" alt="" id="photo" />
-    <div id="photo-info">
-      <p id="photo-description"></p>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- SEO -->
+  <meta name="keywords" content="Mariusz, Maślanka, Artist, Art, Norway, Poland" />
+  <meta name="description" content="Mariusz Maślanka (b. 1992, Poland) is an artist living and working in Oslo, Norway." />
+
+  <title>Mariusz Maślanka</title>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Arimo:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="style.css" />
+
+  <link rel="icon" href="favicon.ico" type="image/x-icon" />
+</head>
+
+
+<body>
+
+  <!-- NAVIGATION BUTTONS -->
+  <div id="buttons">
+    <a href="cv.html">CV</a>
+    <a href="contact.html">Contact</a>
+  </div>
+
+
+  <!-- GALLERY (PHOTO + CAPTION) -->
+  <div id="gallery">
+    <div id="photo-wrapper">
+      <img id="photo" src="" alt="" />
+      <div id="photo-info">
+        <p id="photo-description"></p>
+      </div>
     </div>
   </div>
-</div>
-    <footer>Mariusz Maślanka &copy;</footer>
-    <script>
-      const photo = document.querySelector("#photo");
-      const photoDescription = document.querySelector("#photo-description");
-      const photoNumber = Math.floor(Math.random() * (33 + 1));
-      const properties = [
-        {
-          title: "Frozen Estate",
-          description: "2020, Installation view, SIC! Gallery, BWA Wrocław, photo. Alicja Kielan",
-        },
-        {
-          title: "Frozen Estate",
-          description:
-            "2020, Installation view, SIC! Gallery, BWA Wrocław, photo. Alicja Kielan",
-        },
-        {
-          title: "Frozen Estate",
-          description: "2020, Installation view, SIC! Gallery, BWA Wrocław, photo. Alicja Kielan",
-        },
-        {
-          title: "Frozen Estate",
-          description: "2020, Installation view, SIC! Gallery, BWA Wrocław, photo. Alicja Kielan",
-        },
-        {
-          title: "Frozen Estate",
-          description: "2022, Installation view, Kunstnernes Hus, photo. Vegard Kleven",
-        },
-        {
-          title: "The night will drive a heart",
-          description: "2021, Exhibition view, Wrocław Contemporary Museum (MWW), photo. Alicja Kielan",
-        },
-        {
-          title: "It’s not too late to change your mind",
-          description: "2023, Exhibition view, Kunstnernes Hus, photo. Kunstdok",
-        },
-        {
-          title: "Balcony",
-          description: "2023, Installation view, Kunstnernes Hus, photo. Kunstdok",
-        },
-        {
-          title: "Sleepwalking I",
-          description: "2023, Installation view, Kunstnernes Hus, photo. Kunstdok",
-        },
-         {
-          title: "Sleepwalking",
-          description: "2023, Installation view, Hulias, photo. Jørn Aagaard",
-        },
-           {
-          title: "Sleepwalking",
-          description: "2023, Installation view, Hulias, photo. Jørn Aagaard",
-        },
-        {
-          title: "Sleepwalking VI",
-          description: "2024, Installation view, Krupa Gallery, photo. Krupa Gallery",
-        },
-           {
-          title: "Sleepwalking V",
-          description: "2023, Installation view, Hulias, photo. Jørn Aagaard",
-        },
-          {
-          title: "Sleepwalking IV",
-          description: "2023, Installation view, Hulias, photo. Jørn Aagaard",
-        },
-        {
-          title: "Shadows",
-          description: "2025, Installation view, Centralbanken, photo. Lea Stuedahl",
-        },
-        {
-          title: "Shadows",
-          description: "2025, Installation view, Centralbanken, photo. Lea Stuedahl",
-        },
-        {
-          title: "Shadows",
-          description: "2025, Installation view, Centralbanken, photo. Lea Stuedahl",
-        },
-        {
-          title: "Shadows",
-          description: "2025, Installation view, Centralbanken, photo. Lea Stuedahl",
-        },
-        {
-          title: "Shadows",
-          description: "2025, Installation view, Centralbanken, photo. Lea Stuedahl",
-        },
-        {
-          title: "Shadows",
-          description: "2025, Installation view, Centralbanken, photo. Lea Stuedahl",
-        },
-        {
-          title: "Days Wide Open",
-          description: "2025, Exhibition view, Centralbanken, photo. Lea Stuedahl",
-        },
-        {
-          title: "Days Wide Open",
-          description: "2025, Exhibition view, Centralbanken, photo. Lea Stuedahl",
-        },
-        {
-          title: "Days Wide Open",
-          description: "2025, Exhibition view, Centralbanken, photo. Lea Stuedahl",
-        },
-        {
-          title: "Days Wide Open",
-          description: "2025, Exhibition view, Centralbanken, photo. Lea Stuedahl",
-        },
-        {
-          title: "Days Wide Open",
-          description: "2025, Exhibition view, Centralbanken, photo. Lea Stuedahl",
-        },
-        {
-          title: "Days Wide Open",
-          description: "2025, Exhibition view, Centralbanken, photo. Lea Stuedahl",
-        },
-        {
-          title: "Days Wide Open",
-          description: "2025, Exhibition view, Centralbanken, photo. Lea Stuedahl",
-        },
-        {
-          title: "Angel",
-          description: "2024, Installation view, Loftet, photo. Lea Stuedahl",
-        },
-        {
-          title: "Angel",
-          description: "2024, Installation view, Loftet, photo. Lea Stuedahl",
-        },
-        {
-          title: "Sleepwalking",
-          description: "2023, Installation view, Hulias, photo. Jørn Aagaard",
-        },
-          {
-          title: "Escargatoire",
-          description: "2025, Exhibition view, Snails, photo. Snails",
-        },
-        {
-          title: "Spaces Between Us",
-          description: "2025, Installation view, Snails, photo. Snails",
-        },
-        {
-          title: "Spaces Between Us",
-          description: "2025, Installation view, Snails, photo. Snails",
-        },
-        {
-          title: "Escargatoire",
-          description: "2025, Exhibition view, Snails, photo. Snails",
-        },
-      ];
 
-  photo.src = `${photoNumber}.jpg`;
-  photo.alt = `${properties[photoNumber].title}. ${properties[photoNumber].description}.`;
-  photoDescription.innerHTML = `<i>${properties[photoNumber].title}</i>, ${properties[photoNumber].description}`;
 
-  const photoInfo = document.querySelector("#photo-info");
+  <!-- FOOTER -->
+  <footer>Mariusz Maślanka &copy;</footer>
 
-  function updatePhotoInfoWidth() {
-    photoInfo.style.width = `${photo.offsetWidth}px`;
-  }
 
-  photo.onload = () => {
-    // dodaj klasy dla proporcji
-    if (photo.offsetWidth > photo.offsetHeight) {
-      photo.classList.add("horizontal");
-    } else {
-      photo.classList.add("vertical");
+
+  <!-- JAVASCRIPT -->
+  <script>
+    /* ------------------------------
+       Random photo selection
+    ------------------------------ */
+    const photo = document.querySelector("#photo");
+    const photoDescription = document.querySelector("#photo-description");
+    const photoInfo = document.querySelector("#photo-info");
+
+    const photoNumber = Math.floor(Math.random() * 34);
+
+    const properties = [
+      { title: "Frozen Estate", description: "2020, Installation view, SIC! Gallery, BWA Wrocław, photo. Alicja Kielan" },
+      { title: "Frozen Estate", description: "2020, Installation view, SIC! Gallery, BWA Wrocław, photo. Alicja Kielan" },
+      { title: "Frozen Estate", description: "2020, Installation view, SIC! Gallery, BWA Wrocław, photo. Alicja Kielan" },
+      { title: "Frozen Estate", description: "2020, Installation view, SIC! Gallery, BWA Wrocław, photo. Alicja Kielan" },
+      { title: "Frozen Estate", description: "2022, Installation view, Kunstnernes Hus, photo. Vegard Kleven" },
+      { title: "The night will drive a heart", description: "2021, Exhibition view, MWW Wrocław, photo. Alicja Kielan" },
+      { title: "It’s not too late to change your mind", description: "2023, Exhibition view, Kunstnernes Hus, photo. Kunstdok" },
+      { title: "Balcony", description: "2023, Installation view, Kunstnernes Hus, photo. Kunstdok" },
+      { title: "Sleepwalking I", description: "2023, Installation view, Kunstnernes Hus, photo. Kunstdok" },
+      { title: "Sleepwalking", description: "2023, Installation view, Hulias, photo. Jørn Aagaard" },
+      { title: "Sleepwalking", description: "2023, Installation view, Hulias, photo. Jørn Aagaard" },
+      { title: "Sleepwalking VI", description: "2024, Installation view, Krupa Gallery, photo. Krupa Gallery" },
+      { title: "Sleepwalking V", description: "2023, Installation view, Hulias, photo. Jørn Aagaard" },
+      { title: "Sleepwalking IV", description: "2023, Installation view, Hulias, photo. Jørn Aagaard" },
+      { title: "Shadows", description: "2025, Installation view, Centralbanken, photo. Lea Stuedahl" },
+      { title: "Shadows", description: "2025, Installation view, Centralbanken, photo. Lea Stuedahl" },
+      { title: "Shadows", description: "2025, Installation view, Centralbanken, photo. Lea Stuedahl" },
+      { title: "Shadows", description: "2025, Installation view, Centralbanken, photo. Lea Stuedahl" },
+      { title: "Shadows", description: "2025, Installation view, Centralbanken, photo. Lea Stuedahl" },
+      { title: "Shadows", description: "2025, Installation view, Centralbanken, photo. Lea Stuedahl" },
+      { title: "Days Wide Open", description: "2025, Exhibition view, Centralbanken, photo. Lea Stuedahl" },
+      { title: "Days Wide Open", description: "2025, Exhibition view, Centralbanken, photo. Lea Stuedahl" },
+      { title: "Days Wide Open", description: "2025, Exhibition view, Centralbanken, photo. Lea Stuedahl" },
+      { title: "Days Wide Open", description: "2025, Exhibition view, Centralbanken, photo. Lea Stuedahl" },
+      { title: "Days Wide Open", description: "2025, Exhibition view, Centralbanken, photo. Lea Stuedahl" },
+      { title: "Days Wide Open", description: "2025, Exhibition view, Centralbanken, photo. Lea Stuedahl" },
+      { title: "Days Wide Open", description: "2025, Exhibition view, Centralbanken, photo. Lea Stuedahl" },
+      { title: "Angel", description: "2024, Installation view, Loftet, photo. Lea Stuedahl" },
+      { title: "Angel", description: "2024, Installation view, Loftet, photo. Lea Stuedahl" },
+      { title: "Sleepwalking", description: "2023, Installation view, Hulias, photo. Jørn Aagaard" },
+      { title: "Escargatoire", description: "2025, Exhibition view, Snails, photo. Snails" },
+      { title: "Spaces Between Us", description: "2025, Installation view, Snails, photo. Snails" },
+      { title: "Spaces Between Us", description: "2025, Installation view, Snails, photo. Snails" },
+      { title: "Escargatoire", description: "2025, Exhibition view, Snails, photo. Snails" }
+    ];
+
+    /* Set photo content */
+    photo.src = `${photoNumber}.jpg`;
+    photo.alt = `${properties[photoNumber].title}. ${properties[photoNumber].description}.`;
+    photoDescription.innerHTML =
+      `<i>${properties[photoNumber].title}</i>, ${properties[photoNumber].description}`;
+
+
+    /* ------------------------------
+       Adjust caption width to photo
+    ------------------------------ */
+    function updatePhotoInfoWidth() {
+      const wrapper = document.querySelector("#photo-wrapper");
+      photoInfo.style.width = `${wrapper.offsetWidth}px`;
     }
 
-    updatePhotoInfoWidth();
-  };
+    photo.onload = () => {
+      updatePhotoInfoWidth();
+    };
 
-  // aktualizuj szerokość przy zmianie rozmiaru okna
-  window.addEventListener("resize", updatePhotoInfoWidth);
-    </script>
-  </body>
+    window.addEventListener("resize", updatePhotoInfoWidth);
+  </script>
+
+</body>
 </html>

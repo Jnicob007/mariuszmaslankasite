@@ -11,8 +11,6 @@
 /* --- Reset / Body --- */
 html {
   -webkit-text-size-adjust: 100%;
-  -moz-text-size-adjust: 100%;
-  -ms-text-size-adjust: 100%;
   text-size-adjust: 100%;
 }
 
@@ -32,10 +30,7 @@ body {
 #buttons {
   position: relative;
   width: 100%;
-  height: auto;
-  margin: 0;
   font-size: var(--ui-font-size);
-  line-height: var(--ui-line-height);
 }
 
 #buttons a:first-child {
@@ -52,11 +47,9 @@ body {
   color: black;
 }
 
-/* --- Links --- */
 a {
   text-decoration: none;
   color: black;
-  line-height: var(--ui-line-height);
 }
 
 a:hover {
@@ -68,54 +61,49 @@ a:hover {
   width: 100%;
   display: flex;
   justify-content: center;
-  align-items: center;
   flex: 1;
   padding-top: var(--photo-top-buffer);
-  padding-bottom: 0;
 }
 
-/* 🔥 KLUCZOWA POPRAWKA — wrapper zdjęcia i podpisu */
 #photo-wrapper {
-  display: inline-flex;                   /* zdjęcie i opis w jednej kolumnie */
-  flex-direction: column;
-  align-items: flex-start;                /* podpis wyrównany do lewej krawędzi zdjęcia */
-  position: relative;
-  text-align: left;
+  display: block;
   margin-left: var(--photo-side-margin);
   margin-right: var(--photo-side-margin);
   margin-bottom: var(--photo-footer-buffer);
   max-width: calc(100% - 2 * var(--photo-side-margin));
 }
 
-/* zdjęcie */
+/* NEW FIX — precise Safari width matching */
+#photo-inner {
+  display: inline-block;
+  width: 100%;
+}
+
 #photo {
   display: block;
   width: 100%;
   height: auto;
-  max-width: 100%;
   max-height: calc(
     100vh - var(--buttons-margin) - var(--photo-top-buffer) - var(--photo-footer-buffer)
   );
   object-fit: contain;
   margin: 0;
-  padding: 0;
 }
 
-/* 🔥 DRUGA KLUCZOWA POPRAWKA — podpis ma dokładnie szerokość zdjęcia */
+/* Photo info aligned precisely to the photo width */
 #photo-info {
-  width: 100%;                      /* DZIEDZICZY szerokość zdjęcia */
-  display: block;                   /* zachowuje linie */
+  display: inline-block;
+  width: auto;
+  max-width: 100%;
   margin-top: 0.35vh;
-  font-family: "Arimo", sans-serif;
   font-size: clamp(9px, 0.7vw, 12px);
   line-height: var(--ui-line-height);
-  color: black;
   opacity: 0.9;
+  color: black;
 }
 
 #photo-description {
   margin: 0;
-  opacity: 0.9;
 }
 
 /* --- Footer --- */
@@ -126,11 +114,9 @@ footer {
   transform: translateX(-50%);
   text-align: center;
   font-size: clamp(13px, 0.7vw, 15px);
-  line-height: var(--ui-line-height);
   padding: clamp(10px, 1.4vh, 18px) 0;
-  width: auto;
-  z-index: 1000;
   opacity: 0.8;
+  z-index: 1000;
 }
 
 /* --- CV --- */
@@ -139,7 +125,6 @@ footer {
   margin-right: var(--photo-side-margin);
   margin-top: var(--buttons-margin);
   font-size: var(--ui-font-size);
-  line-height: var(--ui-line-height);
 }
 
 #cv-content a.back-button {
@@ -153,10 +138,8 @@ footer {
   left: 50vw;
   top: var(--buttons-margin);
   width: 50vw;
-  box-sizing: border-box;
   text-align: left;
   font-size: var(--ui-font-size);
-  line-height: var(--ui-line-height);
 }
 
 /* --- Mobile --- */
@@ -172,9 +155,6 @@ footer {
 
   #photo {
     max-width: calc(100vw - 2 * var(--photo-side-margin));
-    max-height: calc(
-      100vh - var(--buttons-margin) - var(--photo-top-buffer) - var(--photo-footer-buffer)
-    );
   }
 
   #contact-content {
@@ -192,22 +172,17 @@ em { font-style: italic; }
   display: block;
   font-weight: 400;
   margin-bottom: 0;
-  line-height: var(--ui-line-height);
 }
 
 .date { opacity: 0.9; }
 
 .entry {
   margin-bottom: 0.5rem;
-  line-height: var(--ui-line-height);
 }
 
 .section { margin-bottom: 3rem; }
 
-.section .title { margin-bottom: 0.5rem; }
-
 .page-title {
   margin-bottom: 0.5rem;
   font-size: var(--ui-font-size);
-  line-height: var(--ui-line-height);
 }
