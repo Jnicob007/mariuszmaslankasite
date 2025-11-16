@@ -52,6 +52,7 @@ body {
   color: black;
 }
 
+/* --- Links --- */
 a {
   text-decoration: none;
   color: black;
@@ -73,8 +74,11 @@ a:hover {
   padding-bottom: 0;
 }
 
+/* 🔥 KLUCZOWA POPRAWKA — wrapper zdjęcia i podpisu */
 #photo-wrapper {
-  display: block; /* ← UPDATED */
+  display: inline-flex;                   /* zdjęcie i opis w jednej kolumnie */
+  flex-direction: column;
+  align-items: flex-start;                /* podpis wyrównany do lewej krawędzi zdjęcia */
   position: relative;
   text-align: left;
   margin-left: var(--photo-side-margin);
@@ -83,6 +87,7 @@ a:hover {
   max-width: calc(100% - 2 * var(--photo-side-margin));
 }
 
+/* zdjęcie */
 #photo {
   display: block;
   width: 100%;
@@ -92,20 +97,19 @@ a:hover {
     100vh - var(--buttons-margin) - var(--photo-top-buffer) - var(--photo-footer-buffer)
   );
   object-fit: contain;
-  margin: 0 auto;
+  margin: 0;
   padding: 0;
 }
 
-/* --- Photo info --- */
+/* 🔥 DRUGA KLUCZOWA POPRAWKA — podpis ma dokładnie szerokość zdjęcia */
 #photo-info {
+  width: 100%;                      /* DZIEDZICZY szerokość zdjęcia */
+  display: block;                   /* zachowuje linie */
   margin-top: 0.35vh;
-  max-width: 100%;
-  width: 100%;  /* ← UPDATED */
   font-family: "Arimo", sans-serif;
   font-size: clamp(9px, 0.7vw, 12px);
   line-height: var(--ui-line-height);
   color: black;
-  text-align: left;
   opacity: 0.9;
 }
 
@@ -146,9 +150,9 @@ footer {
 /* --- Contact --- */
 #contact-content {
   position: absolute;
-  left: 50%; /* ← UPDATED */
+  left: 50vw;
   top: var(--buttons-margin);
-  width: 50%; /* ← UPDATED */
+  width: 50vw;
   box-sizing: border-box;
   text-align: left;
   font-size: var(--ui-font-size);
@@ -182,9 +186,7 @@ footer {
 }
 
 /* --- Typography --- */
-em {
-  font-style: italic;
-}
+em { font-style: italic; }
 
 .title {
   display: block;
@@ -193,22 +195,16 @@ em {
   line-height: var(--ui-line-height);
 }
 
-.date {
-  opacity: 0.9;
-}
+.date { opacity: 0.9; }
 
 .entry {
   margin-bottom: 0.5rem;
   line-height: var(--ui-line-height);
 }
 
-.section {
-  margin-bottom: 3rem;
-}
+.section { margin-bottom: 3rem; }
 
-.section .title {
-  margin-bottom: 0.5rem;
-}
+.section .title { margin-bottom: 0.5rem; }
 
 .page-title {
   margin-bottom: 0.5rem;
