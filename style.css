@@ -5,7 +5,7 @@
   --photo-footer-buffer: clamp(18px, 6.5vh, 60px);
   --back-button-margin-bottom: clamp(20px, 10vh, 40px);
   --ui-font-size: clamp(16px, 1vw, 20px);
-  --ui-line-height: 1.25;
+  --ui-line-height: 1.2;
 }
 
 /* --- Reset / Body --- */
@@ -19,7 +19,7 @@ body {
   padding: 0;
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
+  min-height: 100dvh;
   font-family: "Arimo", sans-serif;
   font-weight: 400;
   font-size: var(--ui-font-size);
@@ -99,8 +99,8 @@ a:hover {
   display: inline-block;
   width: auto;
   max-width: 100%;
-  margin-top: 0.35vh;
-  font-size: clamp(9px, 0.7vw, 12px);
+  margin-top: 0.25vh;
+  font-size: clamp(8px, 0.7vw, 12px);
   line-height: var(--ui-line-height);
   opacity: 0.85;
   color: black;
@@ -112,23 +112,17 @@ a:hover {
 
 /* --- Footer --- */
 footer {
-  margin-top: auto;
-  text-align: center;
-  font-size: clamp(13px, 0.7vw, 15px);
-  padding: clamp(10px, 1vh, 18px) 0;
-  opacity: 0.7;
-}
-
-footer.index-footer {
   position: fixed;
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
+  text-align: center;
+  font-size: clamp(10px, 0.8vw, 14px);
+  padding: clamp(5px, 0.5vh, 15px) 0;
+  opacity: 0.5;
+  z-index: 1000;
 }
 
-.index-footer ~ #gallery #photo-wrapper {
-  margin-bottom: clamp(10px, 2vh, 20px);
-}
 
 /* --- CV --- */
 #cv-content {
@@ -151,6 +145,7 @@ footer.index-footer {
   width: 50vw;
   text-align: left;
   font-size: var(--ui-font-size);
+
 }
 
 /* --- Mobile --- */
@@ -196,9 +191,4 @@ em { font-style: italic; }
 .page-title {
   margin-bottom: 0.6rem;
   font-size: var(--ui-font-size);
-}
-
-/* --- INDEX: no scroll --- */
-body.index {
-  overflow: hidden;
 }
