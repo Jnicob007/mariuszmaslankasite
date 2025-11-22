@@ -1,6 +1,6 @@
 :root {
   --buttons-margin: clamp(15px, 1.25vw, 20px);
-  --photo-top-buffer: clamp(20px, 8.5vh, 72px);
+  --photo-top-buffer: clamp(20px, 8.5vh, 75px);
   --photo-side-margin: clamp(15px, 1.25vw, 20px);
   --photo-footer-buffer: clamp(15px, 5.75vh, 62px);
   --back-button-margin-bottom: clamp(20px, 10vh, 40px);
