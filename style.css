@@ -1,8 +1,8 @@
 :root {
   --buttons-margin: clamp(15px, 1.25vw, 20px);
-  --photo-top-buffer: clamp(20px, 8.5vh, 72px);
+  --photo-top-buffer: clamp(20px, 8vh, 70px);
   --photo-side-margin: clamp(15px, 1.25vw, 20px);
-  --photo-footer-buffer: clamp(18px, 6.5vh, 60px);
+  --photo-footer-buffer: clamp(15px, 5.75vh, 60px);
   --back-button-margin-bottom: clamp(20px, 10vh, 40px);
   --ui-font-size: clamp(16px, 1vw, 20px);
   --ui-line-height: 1.2;
@@ -12,6 +12,7 @@
 html {
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
+  scrollbar-gutter: stable;
 }
 
 body {
@@ -105,8 +106,8 @@ a:hover {
   margin: 0;
   font-size: clamp(8px, 0.7vw, 12px);
   line-height: var(--ui-line-height);
-  opacity: 0.75;
   color: black;
+  opacity: 0.7;
 }
 
 #photo-description {
@@ -120,7 +121,7 @@ footer {
   left: 50%;
   transform: translateX(-50%);
   text-align: center;
-  font-size: clamp(10px, 0.85vw, 14px);
+  font-size: clamp(10px, 0.8vw, 14px);
   padding: 0.5em;
   opacity: 0.5;
   z-index: 1000;
@@ -144,12 +145,13 @@ footer {
 /* --- Contact --- */
 #contact-content {
   position: absolute;
-  left: 50vw;
   top: var(--buttons-margin);
-  width: 50vw;
-  text-align: left;
+  left: 50%;
+  right: var(--photo-side-margin);
   font-size: var(--ui-font-size);
-
+  text-align: left;
+  box-sizing: border-box;
+}
 }
 
 /* --- Mobile --- */
