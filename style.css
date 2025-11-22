@@ -112,15 +112,22 @@ a:hover {
 
 /* --- Footer --- */
 footer {
+  margin-top: auto;
+  text-align: center;
+  font-size: clamp(13px, 0.7vw, 15px);
+  padding: clamp(10px, 1vh, 18px) 0;
+  opacity: 0.7;
+}
+
+footer.index-footer {
   position: fixed;
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
-  text-align: center;
-  font-size: clamp(13px, 0.7vw, 15px);
-  padding: clamp(10px, 1.4vh, 18px) 0;
-  opacity: 0.7;
-  z-index: 1000;
+}
+
+.index-footer ~ #gallery #photo-wrapper {
+  margin-bottom: clamp(10px, 2vh, 20px);
 }
 
 /* --- CV --- */
@@ -175,18 +182,23 @@ em { font-style: italic; }
 .title {
   display: block;
   font-weight: 400;
-  margin-bottom: 0;
+  margin-bottom: 0.6rem;
 }
 
 .date { opacity: 0.9; }
 
 .entry {
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.6rem;
 }
 
-.section { margin-bottom: 3rem; }
+.section { margin-bottom: 2.8rem; }
 
 .page-title {
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.6rem;
   font-size: var(--ui-font-size);
+}
+
+/* --- INDEX: no scroll --- */
+body.index {
+  overflow: hidden;
 }
