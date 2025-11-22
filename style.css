@@ -70,11 +70,14 @@ a:hover {
 
 
 #photo-wrapper {
-  display: block;
+  display: flex;
+  flex-direction: column; /* zdjęcie + opis w kolumnie */
+  align-items: center;
   margin-left: var(--photo-side-margin);
   margin-right: var(--photo-side-margin);
   margin-bottom: var(--photo-footer-buffer);
   max-width: calc(100% - 2 * var(--photo-side-margin));
+  gap: 0.2em; /* <-- odstęp między zdjęciem a opisem skalowany do fontu */
 }
 
 /* NEW FIX — precise Safari width matching */
@@ -99,10 +102,10 @@ a:hover {
   display: inline-block;
   width: auto;
   max-width: 100%;
-  margin-top: 0.25vh;
+  margin: 0;
   font-size: clamp(8px, 0.7vw, 12px);
   line-height: var(--ui-line-height);
-  opacity: 0.85;
+  opacity: 0.75;
   color: black;
 }
 
@@ -118,7 +121,7 @@ footer {
   transform: translateX(-50%);
   text-align: center;
   font-size: clamp(10px, 0.8vw, 14px);
-  padding: clamp(5px, 0.5vh, 15px) 0;
+  padding: 0.5em;
   opacity: 0.5;
   z-index: 1000;
 }
@@ -130,6 +133,7 @@ footer {
   margin-right: var(--photo-side-margin);
   margin-top: var(--buttons-margin);
   font-size: var(--ui-font-size);
+  flex: 1;
 }
 
 #cv-content a.back-button {
