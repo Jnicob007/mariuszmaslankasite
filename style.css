@@ -120,7 +120,7 @@ footer {
   left: 50%;
   transform: translateX(-50%);
   text-align: center;
-  font-size: clamp(10px, 0.8vw, 14px);
+  font-size: clamp(10px, 0.85vw, 14px);
   padding: 0.5em;
   opacity: 0.5;
   z-index: 1000;
