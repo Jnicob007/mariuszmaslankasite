@@ -226,7 +226,7 @@ footer {
   transform: translateX(-50%);
   text-align: center;
   font-size: calc(var(--ui-font-size) * 0.75);
-  padding-bottom: calc(var(--safe-bottom) + 0.2rem);
+  padding: 0.4em;
   z-index: 1000;
 }
 
@@ -279,7 +279,7 @@ body.page-loaded main {
   }
 
   .back-button {
-    left: var(--mobile-margin);
+    left: var(--buttons-margin);
     right: auto;
     text-align: left;
   }
@@ -287,7 +287,7 @@ body.page-loaded main {
   /* CV — normalna szerokość, naturalny odstęp pod tytułem */
   #cv-content {
     position: static;
-    margin: var(--mobile-margin);
+    margin: var(--buttons-margin);
     padding-top: calc(var(--ui-font-size) * 1.9);
     width: auto !important;
   }
@@ -295,7 +295,7 @@ body.page-loaded main {
   /* CONTACT — tak samo jak CV */
   #contact-content {
     position: static;
-    margin: var(--mobile-margin);
+    margin: var(--buttons-margin);
     padding-top: calc(var(--ui-font-size) * 1.9);
     width: auto !important;
   }
