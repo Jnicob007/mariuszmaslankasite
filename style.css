@@ -1,37 +1,48 @@
+/* ---------------- ROOT VARIABLES ---------------- */
+
 :root {
-  --buttons-margin: clamp(15px, 1.25vw, 20px);
-  --photo-top-buffer: clamp(15px, 8.5vh, 70px);
-  --photo-side-margin: clamp(15px, 1.25vw, 20px);
-  --photo-footer-buffer: clamp(10px, 6.25vh, 55px);
-  --back-button-margin-bottom: clamp(20px, 10vh, 40px);
-  --ui-font-size: clamp(16px, 1.1vw, 24px);
+  --scale: min(1vw, 1vh);
+
+  --buttons-margin: calc(var(--scale) * 2);
+  --photo-vertical-buffer: calc(var(--scale) * 9);
+  --photo-side-margin: calc(var(--scale) * 2);
+  --ui-font-size: clamp(16px, 1.1vw, 18px);
   --ui-line-height: 1.3;
 }
 
-/* --- Reset / Body --- */
+/* ---------------- RESET ---------------- */
+
 html {
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
-  scrollbar-gutter: stable;
 }
 
 body {
   margin: 0;
   padding: 0;
+  height: 100vh;
+  overflow: hidden; /* scroll tylko w main */
   display: flex;
   flex-direction: column;
-  min-height: 100dvh;
   font-family: "Arimo", sans-serif;
   font-weight: 400;
   font-size: var(--ui-font-size);
   line-height: var(--ui-line-height);
 }
 
-/* --- Buttons --- */
+main {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+/* ---------------- BUTTONS ---------------- */
+
 #buttons {
   position: relative;
   width: 100%;
   font-size: var(--ui-font-size);
+  font-weight: 400;
 }
 
 #buttons a:first-child {
@@ -45,6 +56,7 @@ body {
   position: absolute;
   left: 50%;
   top: var(--buttons-margin);
+  transform: translateX(0%); /* zaczyna od środka, idzie w prawo */
   color: black;
 }
 
@@ -57,90 +69,142 @@ a:hover {
   text-decoration: underline;
 }
 
-/* --- Gallery --- */
-#gallery {
-  width: 100%;
+/* ---------------- INDEX — GALLERY ---------------- */
+
+.index #gallery {
   display: flex;
   justify-content: center;
-  align-items: center; /* ← dzięki temu FOTO zawsze centruje się pionowo */
-  flex: 1;
-  padding-top: var(--photo-top-buffer);
-  padding-bottom: 0;
+  align-items: center;
+  height: 100%;
+  padding-top: var(--photo-vertical-buffer);
+  padding-bottom: var(--photo-vertical-buffer);
   box-sizing: border-box;
 }
 
-
 #photo-wrapper {
-  display: flex;
-  flex-direction: column; /* zdjęcie + opis w kolumnie */
-  align-items: center;
-  margin-left: var(--photo-side-margin);
-  margin-right: var(--photo-side-margin);
-  margin-bottom: var(--photo-footer-buffer);
+  position: relative;
   max-width: calc(100% - 2 * var(--photo-side-margin));
-  gap: 0.2em; /* <-- odstęp między zdjęciem a opisem skalowany do fontu */
-}
-
-/* NEW FIX — precise Safari width matching */
-#photo-inner {
-  display: inline-block;
-  width: 100%;
 }
 
 #photo {
   display: block;
   width: 100%;
   height: auto;
-  max-height: calc(
-    100vh - var(--buttons-margin) - var(--photo-top-buffer) - var(--photo-footer-buffer)
-  );
+  max-height: calc(100vh - 2 * var(--photo-vertical-buffer));
   object-fit: contain;
   margin: 0;
+  opacity: 0;
+  transition: opacity 0.5s ease-out;
 }
 
-/* Photo info aligned precisely to the photo width */
 #photo-info {
-  display: inline-block;
-  width: auto;
-  max-width: 100%;
-  margin: 0;
-  font-size: clamp(7px, 0.6vw, 12px);
-  line-height: var(--ui-line-height);
-  color: black;
-}
-
-#photo-description {
-  margin: 0;
-}
-
-/* --- Footer --- */
-footer {
-  position: fixed;
+  position: absolute;
+  left: 0;
   bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  text-align: center;
-  font-size: clamp(12px, 0.8vw, 15px);
-  padding: 0.5em;
-  z-index: 1000;
+  transform: translateY(100%);
+  font-size: calc(var(--ui-font-size) * 0.55);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  width: 100%;
+  text-align: left;
+  padding-top: 0.2em;
+}
+
+#photo-info p {
+  margin: 0;
+}
+
+#photo-wrapper:hover #photo-info {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+#photo-placeholder {
+  width: 100%;
+  background: transparent;
+}
+
+#photo.loaded {
+  opacity: 1;
 }
 
 
-/* --- CV --- */
+@media (hover: none) {
+  #photo-wrapper:active #photo-info {
+    opacity: 1;
+  }
+}
+
+@keyframes photoFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* ---------------- CV PAGE ---------------- */
+
 #cv-content {
-  margin-left: var(--photo-side-margin);
-  margin-right: var(--photo-side-margin);
-  margin-top: var(--buttons-margin);
+  position: relative;
+  top: var(--buttons-margin);
+  left: 50%;
+  right: var(--photo-side-margin);
   font-size: var(--ui-font-size);
-  flex: 1;
+  text-align: left;
+  box-sizing: border-box;
+  overflow-wrap: break-word;
+  width: calc(50% - var(--photo-side-margin));
 }
 
-#cv-content a.back-button {
-  display: inline-block;
-  margin-bottom: var(--back-button-margin-bottom);
+.back-button {
+  position: fixed;
+  left: var(--buttons-margin);
+  bottom: var(--buttons-margin);
+  text-decoration: none;
+  font-size: var(--ui-font-size);
+  transition: opacity 0.2s ease;
+  color: black;
+  font-weight: 400;
 }
 
-/* --- Contact --- */
+.back-button:hover {
+  opacity: 1;
+}
+
+
+@media (hover: none) {
+  #photo-wrapper:active #photo-info {
+    opacity: 1;
+  }
+}
+
+#cv-content .section .entry {
+    display: block;
+  }
+  #cv-content .section .entry .date {
+    display: block;
+    margin-bottom: 0.2em;
+    min-width: auto;
+    text-align: left;
+    justify-self: start;
+    overflow-wrap: break-word;
+  }
+
+#cv-content,
+#cv-content .section,
+#cv-content .entry,
+#cv-content .desc {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  word-break: break-word;
+  white-space: normal;
+}
+
+#cv-content .section:last-child {
+  margin-bottom: calc(2.8rem + 1.9rem);
+}
+
+/* ---------------- CONTACT PAGE ---------------- */
+
 #contact-content {
   position: absolute;
   top: var(--buttons-margin);
@@ -151,45 +215,80 @@ footer {
   box-sizing: border-box;
 }
 
-/* --- Mobile --- */
-@media (max-width: 600px) {
-  body {
-    font-size: 16px;
-  }
+/* ---------------- FOOTER ---------------- */
 
-  #photo-wrapper, #cv-content {
-    margin-left: var(--photo-side-margin);
-    margin-right: var(--photo-side-margin);
-  }
+footer {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  font-size: calc(var(--ui-font-size) * 0.75);
+  padding: 0.4em;
+  z-index: 1000;
+}
 
-  #photo {
-    max-width: calc(100vw - 2 * var(--photo-side-margin));
-  }
+/* ---------------- TYPOGRAPHY ---------------- */
 
-  #contact-content {
-    position: static;
-    width: auto;
-    margin: var(--buttons-margin);
+em { font-style: italic; }
+.title { font-weight: 400; margin-bottom: 0.6rem; }
+.entry { margin-bottom: 0.6rem; }
+.section { margin-bottom: 2.8rem; }
+.page-title {
+  position: absolute;
+  left: var(--photo-side-margin);
+  top: var(--buttons-margin);
+  font-size: var(--ui-font-size);
+  font-weight: 400;
+  margin: 0;
+}
+
+/* ---------- PAGE TRANSITION ---------- */
+
+main {
+  opacity: 0;
+  transition: opacity 0.6s ease;
+}
+
+body.page-loaded main {
+  opacity: 1;
+}
+
+@media (max-width: 700px) {
+  #cv-content {
+    width: auto !important;   /* ← to przywraca normalną szerokość */
+  }
+}
+
+/* ---------------- MOBILE — wspólny dla CV i CONTACT ---------------- */
+@media (max-width: 700px) {
+
+  /* Tytuł i back zostają po lewej */
+  .page-title {
+    left: var(--photo-side-margin);
+    right: auto;
     text-align: left;
   }
-}
 
-/* --- Typography --- */
-em { font-style: italic; }
+  .back-button {
+    left: var(--buttons-margin);
+    right: auto;
+    text-align: left;
+  }
 
-.title {
-  display: block;
-  font-weight: 400;
-  margin-bottom: 0.6rem;
-}
+  /* CV — normalna szerokość, naturalny odstęp pod tytułem */
+  #cv-content {
+    position: static;
+    margin: var(--buttons-margin);
+    padding-top: calc(var(--ui-font-size) * 1.9);
+    width: auto !important;
+  }
 
-.entry {
-  margin-bottom: 0.6rem;
-}
-
-.section { margin-bottom: 2.8rem; }
-
-.page-title {
-  margin-bottom: 0.6rem;
-  font-size: var(--ui-font-size);
+  /* CONTACT — tak samo jak CV */
+  #contact-content {
+    position: static;
+    margin: var(--buttons-margin);
+    padding-top: calc(var(--ui-font-size) * 1.9);
+    width: auto !important;
+  }
 }
