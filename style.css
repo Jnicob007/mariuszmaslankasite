@@ -87,24 +87,6 @@ main {
   font-weight: 400;
 }
 
-.back-button::before {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: calc(100% + 2em);  /* elipsa wychodzi poza tekst footer */
-  height: 3em;             /* wysokość elipsy */
-  background: radial-gradient(
-    ellipse at center,
-    rgba(255,255,255,1) 0%,
-    rgba(255,255,255,1) 25%,
-    rgba(255,255,255,0) 100%
-  );
-  border-radius: 50% / 50%;
-  transform: translate(-50%, -50%);
-  z-index: -1;
-}
-
 .back-button-wrapper {
   position: fixed;
   left: var(--buttons-margin);
@@ -297,24 +279,6 @@ footer {
 
 }
 
-footer::before {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: calc(100% + 1.25em);  /* elipsa wychodzi poza tekst footer */
-  height: 2em;             /* wysokość elipsy */
-  background: radial-gradient(
-    ellipse at center,
-    rgba(255,255,255,1) 0%,
-    rgba(255,255,255,1) 25%,
-    rgba(255,255,255,0) 100%
-  );
-  border-radius: 50% / 50%;
-  transform: translate(-50%, -50%);
-  z-index: -1;
-}
-
 /* ---------------- TYPOGRAPHY ---------------- */
 
 em { font-style: italic; }
@@ -334,28 +298,6 @@ em { font-style: italic; }
   margin: 0;
   z-index: 1
 }
-
-.page-title::before {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  display: block;
-  width: calc(100% + 2em);  /* elipsa wychodzi poza tekst footer */
-  height: 3em;             /* wysokość elipsy */
-  background: radial-gradient(
-    ellipse at center,
-    rgba(255,255,255,1) 0%,
-    rgba(255,255,255,1) 25%,
-    rgba(255,255,255,0) 100%
-  );
-  border-radius: 50% / 50%;
-  transform: translate(-50%, -50%);
-  z-index: -1;
-}
-
-
-
 
 
 /* ---------- PAGE TRANSITION ---------- */
