@@ -67,10 +67,12 @@ main {
 
 #buttons a::after {
   bottom: calc(var(--underline-offset) * 2);
+  height: var(--underline-thickness);
 }
 
 .back-button::after {
   bottom: calc(var(--underline-offset) * 2);
+  height: var(--underline-thickness);
 }
 
 /* ---------------- BACK BUTTON ---------------- */
@@ -82,6 +84,7 @@ main {
   align-items: center;
   gap: 0;
   text-decoration: none;
+  font-weight: 400;
 }
 
 .back-button::before {
@@ -285,7 +288,7 @@ footer {
   transform: translateX(-50%);
   text-align: center;
   font-size: calc(var(--ui-font-size) * 0.75);
-  padding: 0.4em;
+  padding: 0.33em;
   z-index: 1000;
   display: inline-block;
 }
