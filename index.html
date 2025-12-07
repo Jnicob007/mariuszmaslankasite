@@ -101,32 +101,34 @@
     const preImg = new Image();
     preImg.src = src;
 
-    preImg.onload = () => {
-      // 1) pobranie proporcji obrazu
-      const ratio = preImg.naturalWidth / preImg.naturalHeight;
-      placeholder.style.aspectRatio = ratio;
+preImg.onload = () => {
+  // 1) ustawienie proporcji zdjęcia
+  const ratio = preImg.naturalWidth / preImg.naturalHeight;
+  placeholder.style.aspectRatio = ratio;
 
-      // 2) wstawienie gotowego obrazu
-      photo.src = src;
+  // 2) wstawienie zdjęcia
+  photo.src = src;
 
-      // 3) fade-in (CSS)
-      photo.classList.add("loaded");
+  requestAnimationFrame(() => {
+    // zdjęcie jest już w layoucie → placeholder można usunąć całkiem
+    placeholder.remove();
 
-      // 4) ukrycie placeholdera
-      placeholder.style.display = "none";
+    // fade-in
+    photo.classList.add("loaded");
+  });
+};
 
-      // 5) dopasowanie szerokości captionu
-      updatePhotoInfoWidth();
-    };
 
-    function updatePhotoInfoWidth() {
-      const wrapper = document.querySelector("#photo-wrapper");
-      const info = document.querySelector("#photo-info");
-      info.style.width = `${wrapper.offsetWidth}px`;
-    }
 
-    window.addEventListener("resize", updatePhotoInfoWidth);
+function updatePhotoInfoOnResize() {
+  const wrapper = document.querySelector("#photo-wrapper");
+  const info = document.querySelector("#photo-info");
 
+  // przy resize ponownie ustaw szerokość wrappera na aktualny rozmiar zdjęcia
+  // (usuń twarde width jeśli chcesz, żeby wrapper znowu był elastyczny — ale wtedy Safari może znowu mieć bug)
+  wrapper.style.width = photo.offsetWidth + "px";
+  info.style.width = photo.offsetWidth + "px";
+}
 
   window.addEventListener('DOMContentLoaded', () => {
     requestAnimationFrame(() => {
