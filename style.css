@@ -12,6 +12,7 @@
   --safe-bottom: env(safe-area-inset-bottom);
   --underline-offset: 0.075em;
   --underline-thickness: 0.075em;
+  --gallery-offset: calc(var(--scale) * 1.25);
 }
 
 /* ---------------- RESET ---------------- */
@@ -63,7 +64,6 @@ main {
   transform: translateX(0%); /* zaczyna od środka, idzie w prawo */
   color: black;
 }
-
 
 #buttons a::after {
   bottom: calc(var(--underline-offset) * 2);
@@ -138,7 +138,7 @@ a:hover::after {
   justify-content: center;
   align-items: center;
   height: 100%;
-  padding-top: var(--photo-vertical-buffer);
+  padding-top: calc(var(--photo-vertical-buffer) + var(--gallery-offset));
   padding-bottom: var(--photo-vertical-buffer);
   box-sizing: border-box;
 }
@@ -148,7 +148,6 @@ a:hover::after {
   display: inline-block;
   max-width: calc(100% - 2 * var(--photo-side-margin));
 }
-
 
 #photo {
   display: block;
@@ -167,9 +166,9 @@ a:hover::after {
   bottom: 0;
   transform: translateY(100%);
   font-size: calc(var(--ui-font-size) * 0.55);
-  opacity: 0;
+  opacity: 1;
   transition: opacity 0.3s ease;
-  pointer-events: none;
+  pointer-events: auto;
   width: 100%;
   text-align: left;
   padding-top: 0.2em;
@@ -194,11 +193,18 @@ a:hover::after {
 }
 
 
-@media (hover: none) {
-  #photo-wrapper:active #photo-info {
+@media (hover: hover) and (pointer: fine) {
+  #photo-info {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  #photo-wrapper:hover #photo-info {
     opacity: 1;
+    pointer-events: auto;
   }
 }
+
 
 @keyframes photoFadeIn {
   from { opacity: 0; }
