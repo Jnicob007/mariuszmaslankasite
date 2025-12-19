@@ -7,12 +7,10 @@
   --photo-vertical-buffer: calc(var(--scale) * 9);
   --photo-side-margin: calc(var(--scale) * 2);
   --ui-font-size: clamp(16px, 1.1vw, 18px);
-  --ui-line-height: 1.3;
+  --ui-line-height: 1.5;
   --safe-top: env(safe-area-inset-top);
   --safe-bottom: env(safe-area-inset-bottom);
-  --underline-offset: 0.075em;
-  --underline-thickness: 0.075em;
-  --gallery-offset: calc(var(--scale) * 1.25);
+  --gallery-offset: calc(var(--scale) * 1.125);
 }
 
 /* ---------------- RESET ---------------- */
@@ -26,10 +24,10 @@ body {
   margin: 0;
   padding: 0;
   height: 100dvh;
-  overflow: hidden; /* scroll tylko w main */
+  overflow: hidden;
   display: flex;
   flex-direction: column;
-  font-family: "Arimo", sans-serif;
+font-family: adobe-garamond-pro, serif;
   font-weight: 400;
   font-size: var(--ui-font-size);
   line-height: var(--ui-line-height);
@@ -47,7 +45,7 @@ main {
   position: relative;
   width: 100%;
   font-size: var(--ui-font-size);
-  font-weight: 400;
+  font-weight: 500;
 }
 
 #buttons a:first-child {
@@ -61,18 +59,23 @@ main {
   position: absolute;
   left: 50%;
   top: var(--buttons-margin);
-  transform: translateX(0%); /* zaczyna od środka, idzie w prawo */
+  transform: translateX(0%);
   color: black;
 }
 
-#buttons a::after {
-  bottom: calc(var(--underline-offset) * 2);
-  height: var(--underline-thickness);
+/* ---------------- NEW UNDERLINE WITH FADE ---------------- */
+
+a {
+  color: black;
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  text-decoration-thickness: 0.075em;
+  text-underline-offset: 0.075em;
+  transition: text-decoration-color 0.2s ease;
 }
 
-.back-button::after {
-  bottom: calc(var(--underline-offset) * 2);
-  height: var(--underline-thickness);
+a:hover {
+  text-decoration-color: currentColor;
 }
 
 /* ---------------- BACK BUTTON ---------------- */
@@ -83,53 +86,18 @@ main {
   display: inline-flex;
   align-items: center;
   gap: 0;
-  text-decoration: none;
-  font-weight: 400;
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  transition: text-decoration-color 0.2s ease;
 }
 
-.back-button-wrapper {
-  position: fixed;
-  left: var(--buttons-margin);
-  bottom: var(--buttons-margin);
-  z-index: 999;
+.back-button:hover {
+  text-decoration-color: currentColor;
 }
 
-.arrow-wrap {
-  display: inline-flex;
-  align-items: center;
-  margin: 0;
-  padding: 0;
+.arrow {
+  font-family: "Source Sans 3", sans-serif;
 }
-
-.back-arrow {
-  display: inline-block;
-  width: 1.1em;
-  height: 1.1em;
-  vertical-align: middle;
-  transform: translateY(-0.075em);
-}
-
-a {
-  color: black;
-  text-decoration: none;
-  position: relative;
-}
-
-a::after {
-  content: "";
-  position: absolute;
-  left: 0; right: 0;
-  height: var(--underline-thickness);
-  background: currentColor;
-  bottom: var(--underline-offset);
-  opacity: 0;
-  transition: opacity 0.2s ease;
-}
-
-a:hover::after {
-  opacity: 1;
-}
-
 
 /* ---------------- INDEX — GALLERY ---------------- */
 
@@ -178,11 +146,6 @@ a:hover::after {
   margin: 0;
 }
 
-#photo-wrapper:hover #photo-info {
-  opacity: 1;
-  pointer-events: auto;
-}
-
 #photo-placeholder {
   width: 100%;
   background: transparent;
@@ -191,20 +154,6 @@ a:hover::after {
 #photo.loaded {
   opacity: 1;
 }
-
-
-@media (hover: hover) and (pointer: fine) {
-  #photo-info {
-    opacity: 0;
-    pointer-events: none;
-  }
-
-  #photo-wrapper:hover #photo-info {
-    opacity: 1;
-    pointer-events: auto;
-  }
-}
-
 
 @keyframes photoFadeIn {
   from { opacity: 0; }
@@ -225,24 +174,16 @@ a:hover::after {
   width: calc(50% - var(--photo-side-margin));
 }
 
-
-@media (hover: none) {
-  #photo-wrapper:active #photo-info {
-    opacity: 1;
-  }
-}
-
 #cv-content .section .entry {
-    display: block;
-  }
-  #cv-content .section .entry .date {
-    display: block;
-    margin-bottom: 0.2em;
-    min-width: auto;
-    text-align: left;
-    justify-self: start;
-    overflow-wrap: break-word;
-  }
+  display: block;
+}
+#cv-content .section .entry .date {
+  display: block;
+  margin-bottom: 0.2em;
+  min-width: auto;
+  text-align: left;
+  overflow-wrap: break-word;
+}
 
 #cv-content,
 #cv-content .section,
@@ -277,12 +218,11 @@ footer {
   left: 50%;
   transform: translateX(-50%);
   text-align: center;
-  font-size: calc(var(--ui-font-size) * 0.7);
+  font-size: calc(var(--ui-font-size) * 0.66);
   padding: 0.33em;
   z-index: 1000;
   display: inline-block;
   opacity: 1;
-
 }
 
 /* ---------------- TYPOGRAPHY ---------------- */
@@ -290,70 +230,53 @@ footer {
 em { font-style: italic; }
 .title { font-weight: 400; margin-bottom: 0.6rem; }
 .entry { margin-bottom: 0.6rem; }
-.section { margin-bottom: 2.8rem; }
-
+.section { margin-bottom: 4rem; }
 
 /* ---------------- PAGE TITLE ---------------- */
 .page-title {
   display: inline-block;
-  position: absolute; /* jak chcesz */
+  position: absolute;
   left: var(--photo-side-margin);
   top: var(--buttons-margin);
   font-size: var(--ui-font-size);
-  font-weight: 400;
+  font-weight: 500;
   margin: 0;
-  z-index: 1
+  z-index: 1;
 }
 
-
 /* ---------- PAGE TRANSITION ---------- */
-
 main {
   opacity: 0;
   transition: opacity 0.6s ease;
 }
-
 body.page-loaded main {
   opacity: 1;
 }
 
 @media (max-width: 700px) {
-  #cv-content {
-    width: auto !important;   /* ← to przywraca normalną szerokość */
-  }
+  #cv-content { width: auto !important; }
 }
 
-/* ---------------- MOBILE — wspólny dla CV i CONTACT ---------------- */
+/* ---------------- MOBILE ---------------- */
 @media (max-width: 700px) {
-  :root {
-    --mobile-margin: 15px; /* nowe, większe marginesy */
-  }
+  :root { --mobile-margin: 15px; }
 }
 
 @media (max-width: 700px) {
-
-  /* Tytuł i back zostają po lewej */
   .page-title {
     left: var(--photo-side-margin);
-    right: auto;
     text-align: left;
   }
-
   .back-button {
     left: var(--buttons-margin);
-    right: auto;
     text-align: left;
   }
-
-  /* CV — normalna szerokość, naturalny odstęp pod tytułem */
   #cv-content {
     position: static;
     margin: var(--buttons-margin);
     padding-top: calc(var(--ui-font-size) * 1.9);
     width: auto !important;
   }
-
-  /* CONTACT — tak samo jak CV */
   #contact-content {
     position: static;
     margin: var(--buttons-margin);
