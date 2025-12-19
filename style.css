@@ -6,7 +6,7 @@
   --buttons-margin: calc(var(--scale) * 2);
   --photo-vertical-buffer: calc(var(--scale) * 9);
   --photo-side-margin: calc(var(--scale) * 2);
-  --ui-font-size: clamp(16px, 1.1vw, 18px);
+  --ui-font-size: clamp(16px, 1.2vw, 18px);
   --ui-line-height: 1.5;
   --safe-top: env(safe-area-inset-top);
   --safe-bottom: env(safe-area-inset-bottom);
@@ -27,7 +27,7 @@ body {
   overflow: hidden;
   display: flex;
   flex-direction: column;
-font-family: garamond-premier-pro, serif;
+font-family: berthold-baskerville-pro, sans-serif;
   font-weight: 400;
   font-size: var(--ui-font-size);
   line-height: var(--ui-line-height);
@@ -96,7 +96,7 @@ a:hover {
 }
 
 .arrow {
-  font-family: "Source Sans 3", sans-serif;
+font-family: cormorant-garamond, serif;
 }
 
 /* ---------------- INDEX — GALLERY ---------------- */
