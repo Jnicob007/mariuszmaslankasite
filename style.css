@@ -6,7 +6,7 @@
   --buttons-margin: calc(var(--scale) * 2);
   --photo-vertical-buffer: calc(var(--scale) * 9);
   --photo-side-margin: calc(var(--scale) * 2);
-  --ui-font-size: clamp(16px, 1.2vw, 18px);
+  --ui-font-size: clamp(18px, 1.2vw, 22px);
   --ui-line-height: 1.5;
   --safe-top: env(safe-area-inset-top);
   --safe-bottom: env(safe-area-inset-bottom);
