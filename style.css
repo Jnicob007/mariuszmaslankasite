@@ -27,7 +27,7 @@ body {
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  font-family: berthold-baskerville-pro, sans-serif;
+font-family: arno-pro, serif;
   font-weight: 400;
   font-size: var(--ui-font-size);
   line-height: var(--ui-line-height);
