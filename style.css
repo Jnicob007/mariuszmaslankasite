@@ -11,6 +11,8 @@
   --safe-top: env(safe-area-inset-top);
   --safe-bottom: env(safe-area-inset-bottom);
   --gallery-offset: calc(var(--scale) * 1.125);
+  --nav-gap: 0.6rem;
+  --contact-left: clamp(calc(var(--buttons-margin) + 4.2em), calc(50% - (600px - 100vw) * 0.2), 50%);
 }
 
 /* ---------------- RESET ---------------- */
@@ -23,7 +25,8 @@ html {
 body {
   margin: 0;
   padding: 0;
-  height: 100svh;
+  height: 100dvh;
+  min-height: 100dvh;
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -31,6 +34,8 @@ body {
   font-weight: 400;
   font-size: var(--ui-font-size);
   line-height: var(--ui-line-height);
+  background: white;
+  overscroll-behavior: none;
 }
 
 main {
@@ -48,19 +53,25 @@ main {
   font-weight: 500;
 }
 
-#buttons a:first-child {
+#buttons a:first-child,
+#buttons span:first-child {
   position: absolute;
   left: var(--buttons-margin);
   top: var(--buttons-margin);
   color: black;
 }
 
-#buttons a:last-child {
+#buttons a:last-child,
+#buttons span:last-child {
   position: absolute;
-  left: 50%;
+  left: var(--contact-left);
   top: var(--buttons-margin);
   transform: translateX(0%);
   color: black;
+}
+
+#buttons span {
+  text-decoration: none;
 }
 
 /* ---------------- NEW UNDERLINE WITH FADE ---------------- */
@@ -99,6 +110,29 @@ a:hover {
 font-family: cormorant-garamond, serif;
 }
 
+/* ---------------- HOME BUTTON ---------------- */
+.home-button {
+  position: fixed;
+  right: calc(var(--buttons-margin) + env(safe-area-inset-right));
+  bottom: calc(var(--buttons-margin) + env(safe-area-inset-bottom));
+  display: inline-flex;
+  align-items: center;
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  transition: text-decoration-color 0.2s ease;
+  z-index: 1;
+}
+
+.home-button:hover {
+  text-decoration-color: currentColor;
+}
+
+.home-button .arrow {
+  font-family: eb-garamond, serif;
+  font-variant-emoji: text;
+  font-size: calc(var(--ui-font-size) + 2px);
+}
+
 /* ---------------- INDEX — GALLERY ---------------- */
 
 .index #gallery {
@@ -125,7 +159,7 @@ font-family: cormorant-garamond, serif;
   object-fit: contain;
   margin: 0;
   opacity: 0;
-  transition: opacity 0.5s ease-out;
+  transition: opacity 0.3s ease-out;
 }
 
 #photo-info {
@@ -134,8 +168,8 @@ font-family: cormorant-garamond, serif;
   bottom: 0;
   transform: translateY(100%);
   font-size: calc(var(--ui-font-size) * 0.55);
-  opacity: 1;
-  transition: opacity 0.3s ease;
+  opacity: 0;
+  transition: opacity 0.3s ease-out;
   pointer-events: auto;
   width: 100%;
   text-align: left;
@@ -155,23 +189,30 @@ font-family: cormorant-garamond, serif;
   opacity: 1;
 }
 
+#photo-info.loaded {
+  opacity: 1;
+}
+
 @keyframes photoFadeIn {
   from { opacity: 0; }
   to { opacity: 1; }
 }
 
-/* ---------------- CV PAGE ---------------- */
+/* ---------------- CV & CONTACT PAGES ---------------- */
+
+body:not(.index) main {
+  padding-top: calc(var(--buttons-margin) + 1.5em + var(--nav-gap));
+  padding-left: var(--buttons-margin);
+  padding-right: var(--buttons-margin);
+  box-sizing: border-box;
+}
 
 #cv-content {
-  position: relative;
-  top: var(--buttons-margin);
-  left: 50%;
-  right: var(--photo-side-margin);
   font-size: var(--ui-font-size);
   text-align: left;
   box-sizing: border-box;
   overflow-wrap: break-word;
-  width: calc(50% - var(--photo-side-margin));
+  width: 100%;
 }
 
 #cv-content .section .entry {
@@ -199,16 +240,13 @@ font-family: cormorant-garamond, serif;
   margin-bottom: calc(2.8rem + 1.9rem);
 }
 
-/* ---------------- CONTACT PAGE ---------------- */
-
 #contact-content {
-  position: absolute;
-  top: var(--buttons-margin);
-  left: 50%;
-  right: var(--photo-side-margin);
   font-size: var(--ui-font-size);
   text-align: left;
   box-sizing: border-box;
+  width: 100%;
+  margin-left: var(--contact-left);
+  max-width: calc(100% - var(--contact-left) - var(--buttons-margin));
 }
 
 /* ---------------- TYPOGRAPHY ---------------- */
@@ -217,18 +255,6 @@ em { font-style: italic; }
 .title { font-weight: 400; margin-bottom: 0.6rem; }
 .entry { margin-bottom: 0.6rem; }
 .section { margin-bottom: 4rem; }
-
-/* ---------------- PAGE TITLE ---------------- */
-.page-title {
-  display: inline-block;
-  position: absolute;
-  left: var(--photo-side-margin);
-  top: var(--buttons-margin);
-  font-size: var(--ui-font-size);
-  font-weight: 500;
-  margin: 0;
-  z-index: 1;
-}
 
 /* ---------- PAGE TRANSITION ---------- */
 main {
@@ -249,24 +275,8 @@ body.page-loaded main {
 }
 
 @media (max-width: 700px) {
-  .page-title {
-    left: var(--photo-side-margin);
-    text-align: left;
-  }
   .back-button {
     left: var(--buttons-margin);
     text-align: left;
-  }
-  #cv-content {
-    position: static;
-    margin: var(--buttons-margin);
-    padding-top: calc(var(--ui-font-size) * 1.9);
-    width: auto !important;
-  }
-  #contact-content {
-    position: static;
-    margin: var(--buttons-margin);
-    padding-top: calc(var(--ui-font-size) * 1.9);
-    width: auto !important;
   }
 }

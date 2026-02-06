@@ -85,49 +85,127 @@
     const photo = document.querySelector("#photo");
     const placeholder = document.querySelector("#photo-placeholder");
     const description = document.querySelector("#photo-description");
+    const info = document.querySelector("#photo-info");
+    const wrapper = document.querySelector("#photo-wrapper");
+    const FADE_MS = 300;
+    let currentPhotoNumber = -1;
+    let isLoading = false;
 
-    // losowanie zdjęcia
-    const photoNumber = Math.floor(Math.random() * 34);
-    const src = `${photoNumber}.jpg`;
+    function pickRandomPhotoNumber() {
+      if (properties.length <= 1) {
+        return 0;
+      }
+      let next = Math.floor(Math.random() * properties.length);
+      while (next === currentPhotoNumber) {
+        next = Math.floor(Math.random() * properties.length);
+      }
+      return next;
+    }
 
-    // opis
-    description.innerHTML =
-      `<i>${properties[photoNumber].title}</i>, ${properties[photoNumber].description}`;
+    function loadPhoto(photoNumber, options = {}) {
+      if (isLoading) {
+        return;
+      }
+      isLoading = true;
+      const src = `${photoNumber}.jpg`;
+      const usePlaceholder = options.usePlaceholder !== false;
 
-    photo.alt = description.innerText;
+      description.innerHTML =
+        `<i>${properties[photoNumber].title}</i>, ${properties[photoNumber].description}`;
+      photo.alt = description.innerText;
 
-    // --- PRELOAD OBRAZU ---
-    const preImg = new Image();
-    preImg.src = src;
+      if (usePlaceholder) {
+        placeholder.style.display = "block";
+      }
 
-preImg.onload = () => {
-  // 1) ustawienie proporcji zdjęcia
-  const ratio = preImg.naturalWidth / preImg.naturalHeight;
-  placeholder.style.aspectRatio = ratio;
+      const preImg = new Image();
+      preImg.onload = () => {
+        if (usePlaceholder) {
+          const ratio = preImg.naturalWidth / preImg.naturalHeight;
+          placeholder.style.aspectRatio = ratio;
+        }
 
-  // 2) wstawienie zdjęcia
-  photo.src = src;
+        photo.src = src;
 
-  requestAnimationFrame(() => {
-    // zdjęcie jest już w layoucie → placeholder można usunąć całkiem
-    placeholder.remove();
+        requestAnimationFrame(() => {
+          if (usePlaceholder) {
+            placeholder.style.display = "none";
+          } else {
+            photo.style.width = "";
+            photo.style.height = "";
+            wrapper.style.width = "";
+            wrapper.style.height = "";
+            info.style.width = "";
+          }
+          photo.classList.add("loaded");
+          info.classList.add("loaded");
+          updatePhotoInfoOnResize();
+          isLoading = false;
+        });
+      };
+      preImg.src = src;
+    }
 
-    // fade-in
-    photo.classList.add("loaded");
-  });
-};
+    function loadRandomPhoto() {
+      const next = pickRandomPhotoNumber();
+      currentPhotoNumber = next;
+      loadPhoto(next);
+    }
+
+    loadRandomPhoto();
 
 
 
 function updatePhotoInfoOnResize() {
-  const wrapper = document.querySelector("#photo-wrapper");
-  const info = document.querySelector("#photo-info");
-
   // przy resize ponownie ustaw szerokość wrappera na aktualny rozmiar zdjęcia
   // (usuń twarde width jeśli chcesz, żeby wrapper znowu był elastyczny — ale wtedy Safari może znowu mieć bug)
   wrapper.style.width = photo.offsetWidth + "px";
   info.style.width = photo.offsetWidth + "px";
 }
+
+photo.addEventListener("click", () => {
+  if (isLoading) {
+    return;
+  }
+  isLoading = true;
+  const freezeWidth = photo.offsetWidth;
+  const freezeHeight = photo.offsetHeight;
+  if (freezeWidth && freezeHeight) {
+    wrapper.style.width = freezeWidth + "px";
+    wrapper.style.height = freezeHeight + "px";
+    info.style.width = freezeWidth + "px";
+    photo.style.width = freezeWidth + "px";
+    photo.style.height = freezeHeight + "px";
+  }
+  let didHandle = false;
+
+  const onFadeOut = (event) => {
+    if (event.propertyName !== "opacity") {
+      return;
+    }
+    photo.removeEventListener("transitionend", onFadeOut);
+    didHandle = true;
+    const next = pickRandomPhotoNumber();
+    currentPhotoNumber = next;
+    isLoading = false;
+    loadPhoto(next, { usePlaceholder: false });
+  };
+
+  photo.addEventListener("transitionend", onFadeOut);
+  photo.classList.remove("loaded");
+  info.classList.remove("loaded");
+
+  setTimeout(() => {
+    photo.removeEventListener("transitionend", onFadeOut);
+    if (didHandle) {
+      return;
+    }
+    const next = pickRandomPhotoNumber();
+    currentPhotoNumber = next;
+    isLoading = false;
+    loadPhoto(next, { usePlaceholder: false });
+  }, FADE_MS);
+});
 
   window.addEventListener('DOMContentLoaded', () => {
     requestAnimationFrame(() => {
@@ -135,8 +213,9 @@ function updatePhotoInfoOnResize() {
     });
   });
 
+  window.addEventListener("resize", updatePhotoInfoOnResize);
+
   </script>
 
 </body>
 </html>
-
