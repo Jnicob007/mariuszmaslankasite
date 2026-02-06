@@ -47,6 +47,8 @@ main {
   background: white;
   min-height: 100dvh;
   min-height: -webkit-fill-available;
+  padding-top: env(safe-area-inset-top);
+  padding-bottom: env(safe-area-inset-bottom);
 }
 
 /* ---------------- BUTTONS ---------------- */
@@ -206,7 +208,7 @@ font-family: cormorant-garamond, serif;
 /* ---------------- CV & CONTACT PAGES ---------------- */
 
 body:not(.index) main {
-  padding-top: calc(var(--buttons-margin) + 1.5em + var(--nav-gap));
+  padding-top: calc(var(--buttons-margin) + 1.5em + var(--nav-gap) + env(safe-area-inset-top));
   padding-left: var(--buttons-margin);
   padding-right: var(--buttons-margin);
   box-sizing: border-box;
