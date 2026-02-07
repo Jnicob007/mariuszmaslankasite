@@ -125,6 +125,10 @@ body.page-loaded.index #buttons a.index-inactive {
   text-decoration-color: currentColor;
 }
 
+body.page-loaded #buttons a.inactive:hover {
+  opacity: 1;
+}
+
 /* ---------------- BACK BUTTON ---------------- */
 .back-button {
   position: fixed;
