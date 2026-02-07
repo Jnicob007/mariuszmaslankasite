@@ -12,7 +12,7 @@
   --safe-bottom: env(safe-area-inset-bottom);
   --gallery-offset: calc(var(--scale) * 1.125);
   --nav-gap: 0.6rem;
-  --contact-left: clamp(calc(var(--buttons-margin) + 4.2em), calc(50% - (600px - 100vw) * 0.2), 50%);
+  --contact-left: 50%;
 }
 
 /* ---------------- RESET ---------------- */
@@ -119,15 +119,18 @@ font-family: cormorant-garamond, serif;
 
 /* ---------------- HOME BUTTON ---------------- */
 .home-button {
-  position: fixed;
-  right: calc(var(--buttons-margin) + env(safe-area-inset-right));
-  bottom: calc(var(--buttons-margin) + env(safe-area-inset-bottom));
   display: inline-flex;
   align-items: center;
   text-decoration: underline;
   text-decoration-color: transparent;
   transition: text-decoration-color 0.2s ease;
   z-index: 1;
+  margin-top: var(--nav-gap);
+  margin-bottom: var(--buttons-margin);
+}
+
+.home-button.align-contact {
+  margin-left: var(--contact-left);
 }
 
 .home-button:hover {
@@ -137,7 +140,7 @@ font-family: cormorant-garamond, serif;
 .home-button .arrow {
   font-family: eb-garamond, serif;
   font-variant-emoji: text;
-  font-size: calc(var(--ui-font-size) + 2px);
+  font-size: calc(var(--ui-font-size) + 3px);
 }
 
 /* ---------------- INDEX — GALLERY ---------------- */
@@ -166,7 +169,7 @@ font-family: cormorant-garamond, serif;
   object-fit: contain;
   margin: 0;
   opacity: 0;
-  transition: opacity 0.3s ease-out;
+  transition: opacity 0.25s ease-out;
 }
 
 #photo-info {
@@ -176,7 +179,7 @@ font-family: cormorant-garamond, serif;
   transform: translateY(100%);
   font-size: calc(var(--ui-font-size) * 0.55);
   opacity: 0;
-  transition: opacity 0.3s ease-out;
+  transition: opacity 0.25s ease-out;
   pointer-events: auto;
   width: 100%;
   text-align: left;
@@ -212,6 +215,17 @@ body:not(.index) main {
   padding-left: var(--buttons-margin);
   padding-right: var(--buttons-margin);
   box-sizing: border-box;
+}
+
+#cv-content,
+#contact-content {
+  opacity: 0;
+  transition: opacity 0.25s ease-out;
+}
+
+body.page-loaded #cv-content,
+body.page-loaded #contact-content {
+  opacity: 1;
 }
 
 #cv-content {
