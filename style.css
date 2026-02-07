@@ -100,7 +100,24 @@ a:hover {
 }
 
 #buttons a.inactive {
+  opacity: 1;
+  transition: opacity 0.25s ease, text-decoration-color 0.2s ease;
+}
+
+body.page-loaded #buttons a.inactive {
   opacity: 0.5;
+}
+
+body.page-loaded #buttons a.index-inactive {
+  opacity: 1;
+}
+
+body.index #buttons a.index-inactive {
+  opacity: 0.5;
+}
+
+body.page-loaded.index #buttons a.index-inactive {
+  opacity: 1;
 }
 
 #buttons a.inactive:hover {
@@ -135,10 +152,11 @@ font-family: cormorant-garamond, serif;
   align-items: center;
   text-decoration: underline;
   text-decoration-color: transparent;
-  transition: text-decoration-color 0.2s ease;
+  transition: opacity 0.25s ease-out, text-decoration-color 0.2s ease;
   z-index: 1;
   margin-top: 0.6rem;
   margin-bottom: var(--buttons-margin);
+  opacity: 0;
 }
 
 .home-button.align-contact {
@@ -147,6 +165,14 @@ font-family: cormorant-garamond, serif;
 
 .home-button:hover {
   text-decoration-color: currentColor;
+}
+
+body.page-loaded .home-button {
+  opacity: 1;
+}
+
+body.page-unload .home-button {
+  opacity: 0;
 }
 
 .home-button .arrow {
@@ -239,6 +265,7 @@ body.page-loaded #cv-content,
 body.page-loaded #contact-content {
   opacity: 1;
 }
+
 
 #cv-content {
   font-size: var(--ui-font-size);
