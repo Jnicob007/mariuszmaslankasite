@@ -174,11 +174,20 @@
 
 
 
-function updatePhotoInfoOnResize() {
+function updatePhotoInfoOnResize(retryCount = 0) {
   // przy resize ponownie ustaw szerokość wrappera na aktualny rozmiar zdjęcia
-  // (usuń twarde width jeśli chcesz, żeby wrapper znowu był elastyczny — ale wtedy Safari może znowu mieć bug)
-  wrapper.style.width = photo.offsetWidth + "px";
-  info.style.width = photo.offsetWidth + "px";
+  const rect = photo.getBoundingClientRect();
+  const width = Math.round(rect.width);
+
+  if (!width && retryCount < 3) {
+    requestAnimationFrame(() => updatePhotoInfoOnResize(retryCount + 1));
+    return;
+  }
+
+  if (width) {
+    wrapper.style.width = width + "px";
+    info.style.width = width + "px";
+  }
 }
 
 photo.addEventListener("click", () => {
@@ -228,7 +237,7 @@ photo.addEventListener("click", () => {
     });
   });
 
-  photo.addEventListener("load", updatePhotoInfoOnResize);
+  photo.addEventListener("load", () => updatePhotoInfoOnResize());
   window.addEventListener("resize", updatePhotoInfoOnResize);
 
   </script>
