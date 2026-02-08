@@ -228,6 +228,7 @@ photo.addEventListener("click", () => {
     });
   });
 
+  photo.addEventListener("load", updatePhotoInfoOnResize);
   window.addEventListener("resize", updatePhotoInfoOnResize);
 
   </script>
