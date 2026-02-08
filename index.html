@@ -152,9 +152,7 @@
             placeholder.style.display = "none";
           } else {
             photo.style.width = "";
-            photo.style.height = "";
             wrapper.style.width = "";
-            wrapper.style.height = "";
             info.style.width = "";
           }
           photo.classList.add("loaded");
@@ -189,13 +187,10 @@ photo.addEventListener("click", () => {
   }
   isLoading = true;
   const freezeWidth = photo.offsetWidth;
-  const freezeHeight = photo.offsetHeight;
-  if (freezeWidth && freezeHeight) {
+  if (freezeWidth) {
     wrapper.style.width = freezeWidth + "px";
-    wrapper.style.height = freezeHeight + "px";
     info.style.width = freezeWidth + "px";
     photo.style.width = freezeWidth + "px";
-    photo.style.height = freezeHeight + "px";
   }
   let didHandle = false;
 
