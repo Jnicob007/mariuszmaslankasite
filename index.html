@@ -157,7 +157,6 @@
           }
           photo.classList.add("loaded");
           info.classList.add("loaded");
-          updatePhotoInfoOnResize();
           isLoading = false;
         });
       };
@@ -173,22 +172,6 @@
     loadRandomPhoto();
 
 
-
-function updatePhotoInfoOnResize(retryCount = 0) {
-  // przy resize ponownie ustaw szerokość wrappera na aktualny rozmiar zdjęcia
-  const rect = photo.getBoundingClientRect();
-  const width = Math.round(rect.width);
-
-  if (!width && retryCount < 3) {
-    requestAnimationFrame(() => updatePhotoInfoOnResize(retryCount + 1));
-    return;
-  }
-
-  if (width) {
-    wrapper.style.width = width + "px";
-    info.style.width = width + "px";
-  }
-}
 
 photo.addEventListener("click", () => {
   if (isLoading) {
@@ -236,9 +219,6 @@ photo.addEventListener("click", () => {
       document.body.classList.add('page-loaded');
     });
   });
-
-  photo.addEventListener("load", () => updatePhotoInfoOnResize());
-  window.addEventListener("resize", updatePhotoInfoOnResize);
 
   </script>
 

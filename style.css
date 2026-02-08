@@ -200,14 +200,16 @@ body.page-unload .home-button {
 #photo-wrapper {
   position: relative;
   display: inline-block;
+  width: max-content;
   max-width: calc(100% - 2 * var(--photo-side-margin));
 }
 
 #photo {
   display: block;
-  width: 100%;
+  width: auto;
   height: auto;
   max-height: calc(100dvh - 2 * var(--photo-vertical-buffer));
+  max-width: 100%;
   object-fit: contain;
   margin: 0;
   opacity: 0;
