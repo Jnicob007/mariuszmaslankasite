@@ -84,6 +84,14 @@ main {
   text-decoration: none;
 }
 
+#buttons a {
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  text-decoration-thickness: 0.075em;
+  text-underline-offset: 0.075em;
+  transition: opacity 0.25s ease;
+}
+
 /* ---------------- NEW UNDERLINE WITH FADE ---------------- */
 
 a {
@@ -92,40 +100,14 @@ a {
   text-decoration-color: transparent;
   text-decoration-thickness: 0.075em;
   text-underline-offset: 0.075em;
-  transition: text-decoration-color 0.2s ease;
-}
-
-a:hover {
-  text-decoration-color: currentColor;
+  transition: opacity 0.25s ease;
 }
 
 #buttons a.inactive {
   opacity: 1;
-  transition: opacity 0.25s ease, text-decoration-color 0.2s ease;
 }
 
 body.page-loaded #buttons a.inactive {
-  opacity: 0.5;
-}
-
-body.page-loaded #buttons a.index-inactive {
-  opacity: 1;
-}
-
-body.index #buttons a.index-inactive {
-  opacity: 0.5;
-}
-
-body.page-loaded.index #buttons a.index-inactive {
-  opacity: 1;
-}
-
-#buttons a.inactive:hover {
-  opacity: 1;
-  text-decoration-color: currentColor;
-}
-
-body.page-loaded #buttons a.inactive:hover {
   opacity: 1;
 }
 
@@ -139,11 +121,7 @@ body.page-loaded #buttons a.inactive:hover {
   gap: 0;
   text-decoration: underline;
   text-decoration-color: transparent;
-  transition: text-decoration-color 0.2s ease;
-}
-
-.back-button:hover {
-  text-decoration-color: currentColor;
+  transition: opacity 0.25s ease;
 }
 
 .arrow {
@@ -154,29 +132,16 @@ font-family: cormorant-garamond, serif;
 .home-button {
   display: inline-flex;
   align-items: center;
-  text-decoration: underline;
-  text-decoration-color: transparent;
-  transition: opacity 0.25s ease-out, text-decoration-color 0.2s ease;
+  text-decoration: none;
+  transition: opacity 0.25s ease-out;
   z-index: 1;
-  margin-top: 0.6rem;
+  margin-top: calc(4rem - 1em);
   margin-bottom: var(--buttons-margin);
   opacity: 0;
 }
 
 .home-button.align-contact {
   margin-left: var(--contact-left);
-}
-
-.home-button:hover {
-  text-decoration-color: currentColor;
-}
-
-body.page-loaded .home-button {
-  opacity: 1;
-}
-
-body.page-unload .home-button {
-  opacity: 0;
 }
 
 .home-button .arrow {
@@ -269,6 +234,26 @@ body:not(.index) main {
 body.page-loaded #cv-content,
 body.page-loaded #contact-content {
   opacity: 1;
+}
+
+body.page-loaded .home-button {
+  opacity: 1;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  a:hover,
+  #buttons a:hover,
+  .home-button:hover,
+  .back-button:hover {
+    opacity: 0.5;
+  }
+
+  body.page-loaded #buttons a:hover,
+  body.page-loaded #buttons a.inactive:hover,
+  body.page-loaded .home-button:hover,
+  body.page-loaded .back-button:hover {
+    opacity: 0.5;
+  }
 }
 
 
