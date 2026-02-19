@@ -108,7 +108,7 @@ a {
 }
 
 body.page-loaded #buttons a.inactive {
-  opacity: 1;
+  opacity: 0.3;
 }
 
 /* ---------------- BACK BUTTON ---------------- */
@@ -135,7 +135,7 @@ font-family: cormorant-garamond, serif;
   text-decoration: none;
   transition: opacity 0.25s ease-out;
   z-index: 1;
-  margin-top: calc(4rem - 1em);
+  margin-top: 0.6rem;
   margin-bottom: var(--buttons-margin);
   opacity: 0;
 }
@@ -245,14 +245,17 @@ body.page-loaded .home-button {
   #buttons a:hover,
   .home-button:hover,
   .back-button:hover {
-    opacity: 0.5;
+    opacity: 0.6;
   }
 
   body.page-loaded #buttons a:hover,
-  body.page-loaded #buttons a.inactive:hover,
   body.page-loaded .home-button:hover,
   body.page-loaded .back-button:hover {
-    opacity: 0.5;
+    opacity: 0.6;
+  }
+
+  body.page-loaded #buttons a.inactive:hover {
+    opacity: 1;
   }
 }
 
